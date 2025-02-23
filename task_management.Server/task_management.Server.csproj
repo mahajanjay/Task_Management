@@ -20,6 +20,7 @@
     <ProjectReference Include="..\task_management.client\task_management.client.esproj">
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
     </ProjectReference>
+    <ProjectReference Include="..\task_management.Data\task_management.Data.csproj" />
   </ItemGroup>
 
 </Project>
