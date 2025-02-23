@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "task_management.client", "task_management.client\task_management.client.esproj", "{F172C6D4-6502-CFC3-BCF7-FB5E1CFA4539}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task_management.Server", "task_management.Server\task_management.Server.csproj", "{AAFA588D-E41C-43FF-8B26-FA94F691DBB2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F172C6D4-6502-CFC3-BCF7-FB5E1CFA4539}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F172C6D4-6502-CFC3-BCF7-FB5E1CFA4539}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F172C6D4-6502-CFC3-BCF7-FB5E1CFA4539}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{F172C6D4-6502-CFC3-BCF7-FB5E1CFA4539}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F172C6D4-6502-CFC3-BCF7-FB5E1CFA4539}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F172C6D4-6502-CFC3-BCF7-FB5E1CFA4539}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AAFA588D-E41C-43FF-8B26-FA94F691DBB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAFA588D-E41C-43FF-8B26-FA94F691DBB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAFA588D-E41C-43FF-8B26-FA94F691DBB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAFA588D-E41C-43FF-8B26-FA94F691DBB2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06290C12-1D84-4096-9289-5ADDDB68D23A}
+	EndGlobalSection
+EndGlobal
