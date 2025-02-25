@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace task_management.Data.Entities
+{
+    class Role
+    {
+        public int Id { get; set; } // Unique identifier for the role
+        public string Name { get; set; } // Name of the role (e.g., "Admin", "User")
+
+    }
+}

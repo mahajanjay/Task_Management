@@ -1,3 +1,5 @@
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +10,11 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+
+var taskManagementString = builder.Configuration.GetConnectionString("TaskManagement_String");
+
+builder.Services.AddDbContext<task_management.Data.DataContext.TaskManagerContext>(options => 
+    options.UseSqlServer(taskManagementString));
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
