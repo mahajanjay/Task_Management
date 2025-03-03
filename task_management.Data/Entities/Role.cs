@@ -11,5 +11,6 @@ namespace task_management.Data.Entities
         public int Id { get; set; } // Unique identifier for the role
         public string Name { get; set; } // Name of the role (e.g., "Admin", "User")
 
+        public ICollection<User> Users { get; set; }
     }
 }
