@@ -25,6 +25,12 @@ namespace task_management.Data.DataContext
                 .WithMany(r => r.Users)
                 .HasForeignKey(u => u.RoleId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Role>().HasData(
+                new Role { Id = 1, Name = "Admin" },
+                new Role { Id = 2, Name = "Member" },
+                new Role { Id = 3, Name = "User" }
+                );
         }
     }
 }
