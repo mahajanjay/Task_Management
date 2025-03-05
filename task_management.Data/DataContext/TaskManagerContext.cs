@@ -9,12 +9,20 @@ using Task = task_management.Data.Entities.Task;
 
 namespace task_management.Data.DataContext
 {
+
+    /*
+     EF Commands - directory should be Data project
+        1. Add-Migration MigrationName -StartupProject task_management.Server
+        2. Update-Database -StartupProject task_management.Server
+    */
+
     public class TaskManagerContext : DbContext
     {
         public TaskManagerContext(DbContextOptions<TaskManagerContext> options) : base(options) { }
 
         DbSet<Role> Roles { get; set; }
         DbSet<User> Users { get; set; }
+        DbSet<Team> Teams { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,6 +39,12 @@ namespace task_management.Data.DataContext
                 new Role { Id = 2, Name = "Member" },
                 new Role { Id = 3, Name = "User" }
                 );
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.Team)
+                .WithMany(t => t.Users)
+                .HasForeignKey(u => u.TeamId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }
