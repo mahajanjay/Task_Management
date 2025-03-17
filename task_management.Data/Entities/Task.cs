@@ -12,8 +12,6 @@ namespace task_management.Data.Entities
         public string Name { get; set; }
         public string Description { get; set; }
 
-        /*
-         AssignedTo is User id refers to users
-         */
+        public ICollection<User> Users { get; set; }
     }
 }
