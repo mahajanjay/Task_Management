@@ -16,5 +16,6 @@ namespace task_management.Data.Entities
         
         public Role Role { get; set; }
         public Team Team { get; set; }
-    }
+
+    }  
 }

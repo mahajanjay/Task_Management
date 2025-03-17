@@ -23,6 +23,7 @@ namespace task_management.Data.DataContext
         DbSet<Role> Roles { get; set; }
         DbSet<User> Users { get; set; }
         DbSet<Team> Teams { get; set; }
+        DbSet<Task> Tasks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -45,6 +46,7 @@ namespace task_management.Data.DataContext
                 .WithMany(t => t.Users)
                 .HasForeignKey(u => u.TeamId)
                 .OnDelete(DeleteBehavior.Cascade);
+
         }
     }
 }
