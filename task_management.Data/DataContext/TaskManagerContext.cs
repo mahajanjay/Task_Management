@@ -46,6 +46,11 @@ namespace task_management.Data.DataContext
                 .WithMany(t => t.Users)
                 .HasForeignKey(u => u.TeamId)
                 .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Task>()
+                .HasMany(u => u.Users)
+                .WithMany(t => t.Tasks)
+                .UsingEntity(j => j.ToTable("Tasks"));
         }
     }
 }
