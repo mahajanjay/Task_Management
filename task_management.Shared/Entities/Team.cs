@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace task_management.Data.Entities
 {
-    class Team
+    public class Team
     {
         public int Id { get; set; }
         public string Name { get; set; }

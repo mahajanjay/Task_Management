@@ -22,4 +22,8 @@
     <Folder Include="Migrations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\task_management.Shared\task_management.Shared.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace task_management.Data.Entities
 {
-    class Task
+    public class Role
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int Id { get; set; } // Unique identifier for the role
+        public string Name { get; set; } // Name of the role (e.g., "Admin", "User")
 
         public ICollection<User> Users { get; set; }
     }

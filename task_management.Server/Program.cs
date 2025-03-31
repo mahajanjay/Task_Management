@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using task_management.Data.Repositories;
+using task_management.Shared.Interfaces.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +17,11 @@ var taskManagementString = builder.Configuration.GetConnectionString("TaskManage
 
 builder.Services.AddDbContext<task_management.Data.DataContext.TaskManagerContext>(options => 
     options.UseSqlServer(taskManagementString));
+
+// Register repositories and unit of work
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
