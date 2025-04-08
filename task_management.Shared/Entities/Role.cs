@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace task_management.Data.Entities
+namespace task_management.Shared.Entities
 {
     public class Role
     {

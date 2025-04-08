@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using task_management.Data.Entities;
-using Task = task_management.Data.Entities.Task;
+using task_management.Shared.Entities;
+using Task = task_management.Shared.Entities.Task;
 
 namespace task_management.Data.DataContext
 {

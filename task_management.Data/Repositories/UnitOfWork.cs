@@ -5,8 +5,8 @@ using task_management.Shared.Interfaces.Repositories;
 public class UnitOfWork : IUnitOfWork
 {
     private readonly TaskManagerContext _context;
-    public IUserRepository Users { get; private set; } 
-    public IRoleRepository Roles { get; private set; }
+    public IUserRepository Users { get; set; } 
+    public IRoleRepository Roles { get; set; }
 
     public UnitOfWork(TaskManagerContext context)
     {

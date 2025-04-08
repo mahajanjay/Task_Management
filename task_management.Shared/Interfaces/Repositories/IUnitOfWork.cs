@@ -8,6 +8,9 @@ namespace task_management.Shared.Interfaces.Repositories
 {
     public interface IUnitOfWork : IDisposable
     {
+        public IUserRepository Users { get; set; }
+        public IRoleRepository Roles { get; set; }
         Task<int> CompleteAsync();
+        public void Dispose();
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using task_management.Data.Entities;
+using task_management.Shared.Entities;
 
 namespace task_management.Shared.Interfaces.Repositories
 {
