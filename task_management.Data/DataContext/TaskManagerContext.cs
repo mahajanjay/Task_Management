@@ -51,6 +51,10 @@ namespace task_management.Data.DataContext
                 .HasMany(u => u.Users)
                 .WithMany(t => t.Tasks)
                 .UsingEntity(j => j.ToTable("Tasks"));
+
+            modelBuilder.Entity<Team>().HasData(
+                new Team { Id = 1, Name = "Software Development Team" }
+                );
         }
     }
 }
