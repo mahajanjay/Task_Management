@@ -7,12 +7,14 @@ public class UnitOfWork : IUnitOfWork
     private readonly TaskManagerContext _context;
     public IUserRepository Users { get; set; } 
     public IRoleRepository Roles { get; set; }
+    public ITeamRepository Teams { get; set; }
 
     public UnitOfWork(TaskManagerContext context)
     {
         _context = context;
         Users = new UserRepository(_context);
         Roles = new RoleRepository(_context);
+        Teams = new TeamRepository(_context);
     }
 
     public async Task<int> CompleteAsync()

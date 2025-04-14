@@ -10,6 +10,7 @@ namespace task_management.Shared.Interfaces.Repositories
     {
         public IUserRepository Users { get; set; }
         public IRoleRepository Roles { get; set; }
+        public ITeamRepository Teams { get; set; }
         Task<int> CompleteAsync();
         public void Dispose();
     }
