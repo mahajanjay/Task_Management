@@ -1,11 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using task_management.Data.DataContext;
 using task_management.Shared.Interfaces.Repositories;
 
@@ -24,32 +18,74 @@ namespace task_management.Data.Repositories
 
         public async Task<T> GetByIdAsync(int id)
         {
-            return await _dbSet.FindAsync(id) ?? throw new InvalidOperationException("Entity not found");
+            try
+            {
+                return await _dbSet.FindAsync(id) ?? throw new InvalidOperationException("Entity not found");
+            } 
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            return await _dbSet.ToListAsync();
+            try
+            {
+                return await _dbSet.ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
-            return await _dbSet.Where(predicate).ToListAsync();
+            try
+            {
+                return await _dbSet.Where(predicate).ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task AddAsync(T entity)
         {
-            await _dbSet.AddAsync(entity);
+            try
+            {
+                await _dbSet.AddAsync(entity);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public void Update(T entity)
         {
-            _dbSet.Update(entity);
+            try
+            {
+                _dbSet.Update(entity);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public void Remove(T entity)
         {
-            _dbSet.Remove(entity);
+            try
+            {
+                _dbSet.Remove(entity);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

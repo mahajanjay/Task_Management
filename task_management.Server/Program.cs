@@ -19,10 +19,12 @@ builder.Services.AddDbContext<task_management.Data.DataContext.TaskManagerContex
 
 //Register Service
 builder.Services.AddScoped<UserService>();
+builder.Services.AddScoped<TeamService>();
 
 // Register repositories and unit of work
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
+builder.Services.AddScoped<ITeamRepository, TeamRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
