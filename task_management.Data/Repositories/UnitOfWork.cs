@@ -17,6 +17,7 @@ public class UnitOfWork : IUnitOfWork
         Teams = new TeamRepository(_context);
     }
 
+    // Returns how many entities were affected in the database
     public async Task<int> CompleteAsync()
     {
         return await _context.SaveChangesAsync();
