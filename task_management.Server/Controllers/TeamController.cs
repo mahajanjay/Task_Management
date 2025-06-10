@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using task_management.Server.DTO;
 using task_management.Shared;
 
 namespace task_management.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class TeamController : ControllerBase
     {
@@ -15,6 +17,7 @@ namespace task_management.Server.Controllers
             _teamService = teamService;
         }
 
+        [MapToApiVersion("1.0")]
         [HttpGet]
         public async Task<ActionResult<ApiResponse<List<Team>>>> Get()
         {
@@ -38,6 +41,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse<Team>>> Get([FromRoute] int id)
         {
@@ -61,6 +65,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [MapToApiVersion("1.0")]
         [HttpPost]
         public async Task<ActionResult<ApiResponse<int>>> Post([FromBody] Team team)
         {
@@ -82,6 +87,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [MapToApiVersion("1.0")]
         [HttpPut("{id}")]
         public async Task<ActionResult<ApiResponse<bool>>> Put([FromRoute] int id ,[FromBody] Team team)
         {
@@ -103,6 +109,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [MapToApiVersion("1.0")]
         [HttpDelete("{id}")]
         public async Task<ActionResult<ApiResponse<bool>>> Delete([FromRoute] int id)
         {

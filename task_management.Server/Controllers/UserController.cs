@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Mvc;
 using task_management.Server.DTO;
 using task_management.Server.Services;
 using task_management.Shared;
 
 namespace task_management.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [ApiVersion("1.0")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     public class UserController : Controller
     {
@@ -15,6 +17,7 @@ namespace task_management.Server.Controllers
             _userService = userService;
         }
 
+        [MapToApiVersion("1.0")]
         [HttpGet]
         public async Task<ActionResult<ApiResponse<List<User>>>> Get()
         {
@@ -38,6 +41,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse<User>>> Get([FromRoute] int id)
         {
@@ -60,6 +64,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [MapToApiVersion("1.0")]
         [HttpPost]
         public async Task<ActionResult<ApiResponse<int>>> Post([FromBody] User user)
         {
@@ -82,6 +87,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [MapToApiVersion("1.0")]
         [HttpPut("id")]
         public async Task<ActionResult<ApiResponse<int>>> Update([FromBody] User user)
         {
