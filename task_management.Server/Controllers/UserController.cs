@@ -1,4 +1,5 @@
 ﻿using Asp.Versioning;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using task_management.Server.DTO;
 using task_management.Server.Services;
@@ -17,6 +18,7 @@ namespace task_management.Server.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         [MapToApiVersion("1.0")]
         [HttpGet]
         public async Task<ActionResult<ApiResponse<List<User>>>> Get()
@@ -41,6 +43,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [Authorize]
         [MapToApiVersion("1.0")]
         [HttpGet("{id}")]
         public async Task<ActionResult<ApiResponse<User>>> Get([FromRoute] int id)
@@ -64,6 +67,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [AllowAnonymous]
         [MapToApiVersion("1.0")]
         [HttpPost]
         public async Task<ActionResult<ApiResponse<int>>> Post([FromBody] User user)
@@ -87,6 +91,7 @@ namespace task_management.Server.Controllers
             });
         }
 
+        [Authorize]
         [MapToApiVersion("1.0")]
         [HttpPut("id")]
         public async Task<ActionResult<ApiResponse<int>>> Update([FromBody] User user)

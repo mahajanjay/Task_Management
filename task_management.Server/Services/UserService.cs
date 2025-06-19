@@ -78,6 +78,8 @@ namespace task_management.Server.Services
                 {
                     Name = user.Name,
                     Email = user.Email,
+                    UserName = user.UserName,
+                    Password = user.Password,
                     RoleId = user.RoleId,
                     TeamId = user.TeamId
                 };
