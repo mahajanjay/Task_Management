@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 interface WeatherForecast {
   date: string;
@@ -10,6 +11,10 @@ interface WeatherForecast {
 
 @Component({
   selector: 'app-root',
+  imports: [
+    CommonModule,
+    RouterModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

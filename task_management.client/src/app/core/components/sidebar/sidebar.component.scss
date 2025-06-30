@@ -1,0 +1,111 @@
+.tb-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 220px;
+  background: var(--tb-surface);
+  color: var(--tb-text);
+  box-shadow: 2px 0 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  z-index: 200;
+  transition: width 0.2s;
+}
+.tb-sidebar__logo {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 1rem 1rem 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--tb-primary);
+}
+.tb-sidebar__logo-img {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 0.7rem;
+}
+.tb-sidebar__app-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.tb-sidebar__nav {
+  flex: 1;
+  padding: 1rem 0;
+}
+.tb-sidebar__nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.tb-sidebar__nav-link {
+  display: block;
+  padding: 0.9rem 2rem;
+  color: var(--tb-text);
+  text-decoration: none;
+  font-weight: 500;
+  border-left: 4px solid transparent;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+.tb-sidebar__nav-link:hover {
+  background: var(--tb-primary);
+  color: #fff;
+  border-left: 4px solid var(--tb-primary);
+}
+.tb-sidebar__toggle {
+  background: none;
+  border: none;
+  color: var(--tb-primary);
+  font-size: 1.5rem;
+  cursor: pointer;
+  margin: 0 0 1.5rem 1rem;
+  align-self: flex-start;
+  transition: color 0.2s;
+  z-index: 10;
+  margin-top: auto;
+}
+.tb-sidebar__toggle:hover {
+  color: var(--tb-text);
+}
+.tb-sidebar--collapsed {
+  width: 60px !important;
+}
+.tb-sidebar--collapsed .tb-sidebar__app-name {
+  display: none;
+}
+.tb-sidebar--collapsed .tb-sidebar__logo-img {
+  margin-right: 0;
+}
+.tb-sidebar--collapsed .tb-sidebar__nav-link {
+  padding: 0.9rem 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+}
+.nav-icon {
+  font-size: 1.3rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+.nav-text {
+  margin-left: 1rem;
+  vertical-align: middle;
+}
+.tb-sidebar--collapsed .nav-text {
+  display: none;
+}
+@media (max-width: 900px) {
+  .tb-sidebar {
+    width: 60px;
+  }
+  .tb-sidebar__logo-img {
+    margin-right: 0;
+  }
+  .tb-sidebar__app-name {
+    display: none;
+  }
+  .tb-sidebar__nav-link {
+    padding: 0.9rem 1rem;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+} 
