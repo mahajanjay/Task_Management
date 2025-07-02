@@ -1,0 +1,18 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="add-task-form">
+  <input formControlName="title" placeholder="Task title" required />
+  <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched" class="error">Title is required</div>
+  <input formControlName="description" placeholder="Description" />
+  <select formControlName="priority">
+    <option value="">Priority</option>
+    <option value="Low">Low</option>
+    <option value="Medium">Medium</option>
+    <option value="High">High</option>
+    <option value="Critical">Critical</option>
+  </select>
+  <input formControlName="assignee" placeholder="Assignee" />
+  <input formControlName="dueDate" type="date" placeholder="Due Date" />
+  <input formControlName="labels" placeholder="Labels (comma separated)" />
+  <input formControlName="storyPoints" type="number" placeholder="Story Points" />
+  <input formControlName="attachments" placeholder="Attachments (comma separated URLs)" />
+  <button type="submit" [disabled]="form.invalid">Add Task</button>
+</form> 

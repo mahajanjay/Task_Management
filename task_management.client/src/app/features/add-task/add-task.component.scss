@@ -1,0 +1,30 @@
+.add-task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.add-task-form input,
+.add-task-form select {
+  flex: 1 1 200px;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.add-task-form button {
+  padding: 0.5rem 1rem;
+  background: var(--tb-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.add-task-form button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+.error {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  flex-basis: 100%;
+} 

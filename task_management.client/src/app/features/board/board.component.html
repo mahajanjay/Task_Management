@@ -1,0 +1,29 @@
+<div class="board">
+  <h2>{{ board.name }}</h2>
+  <app-add-task (taskAdded)="onTaskAdded($event)"></app-add-task>
+  <div class="board-columns">
+    <div class="board-column" *ngFor="let column of board.columns; let colIdx = index">
+      <h3>{{ column.name }}</h3>
+      <div
+        cdkDropList
+        [cdkDropListData]="column.tasks"
+        class="task-list"
+        (cdkDropListDropped)="drop($event, colIdx)"
+      >
+        <div class="task-card" *ngFor="let task of column.tasks" cdkDrag (click)="openTaskDetails(task)">
+          <div class="task-title">{{ task.title }}</div>
+          <div class="task-desc">{{ task.description }}</div>
+          <div class="task-meta">
+            <span *ngIf="task.priority">Priority: {{ task.priority }}</span>
+            <span *ngIf="task.assignee">Assignee: {{ task.assignee }}</span>
+            <span *ngIf="task.dueDate">Due: {{ task.dueDate }}</span>
+            <span *ngIf="task.labels?.length">Labels: {{ task.labels?.join(', ') }}</span>
+            <span *ngIf="task.storyPoints">Points: {{ task.storyPoints }}</span>
+            <span *ngIf="task.attachments?.length">Attachments: {{ task.attachments?.length }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-task-details *ngIf="selectedTask" [task]="selectedTask" (save)="saveTaskDetails($event)" (close)="closeTaskDetails()"></app-task-details>
+</div> 

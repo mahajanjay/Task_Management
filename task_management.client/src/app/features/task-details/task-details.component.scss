@@ -1,0 +1,39 @@
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal {
+  background: var(--tb-surface);
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  padding: 2rem;
+  min-width: 350px;
+  max-width: 500px;
+  width: 100%;
+}
+.modal input, .modal textarea, .modal select {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+.subtasks, .comments {
+  margin-bottom: 1rem;
+}
+.add-comment {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+} 
