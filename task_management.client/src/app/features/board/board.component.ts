@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Board, BoardColumn } from '../../shared/board.model';
-import { Task } from '../../shared/task.model';
+import { Board, BoardColumn } from '../../shared/models/board.model';
+import { Task } from '../../shared/models/task.model';
 import { FormsModule } from '@angular/forms';
 import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
@@ -10,22 +10,34 @@ import { TaskDetailsComponent } from '../task-details/task-details.component';
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [CommonModule, DragDropModule, FormsModule, AddTaskComponent, TaskDetailsComponent],
+  imports: [CommonModule, DragDropModule, FormsModule, TaskDetailsComponent],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss'
 })
+
 export class BoardComponent {
   board: Board = {
     id: '1',
     name: 'My Board',
     columns: [
-      { id: 'todo', name: 'To Do', tasks: [] },
+      { 
+        id: 'todo', 
+        name: 'To Do', 
+        tasks: [
+          { id: '1', title: 'Task 1', description: 'Description 1', status: 'todo', priority: 'Medium', assignee: 'John Doe', dueDate: '2025-01-01', labels: ['bug', 'feature'], storyPoints: 1, attachments: ['https://example.com/attachment1.jpg'] },
+          { id: '2', title: 'Task 2', description: 'Description 2', status: 'todo', priority: 'High', assignee: 'Jane Smith', dueDate: '2025-01-02', labels: ['feature'], storyPoints: 2, attachments: ['https://example.com/attachment2.jpg'] }
+        ] 
+      },
       { id: 'in-progress', name: 'In Progress', tasks: [] },
       { id: 'done', name: 'Done', tasks: [] }
     ]
   };
 
   selectedTask: Task | null = null;
+
+  get connectedDropLists(): string[] {
+    return this.board.columns.map(col => col.id);
+  }
 
   onTaskAdded(task: Partial<Task>) {
     const newTask: Task = {

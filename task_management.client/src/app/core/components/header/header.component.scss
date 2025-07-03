@@ -83,3 +83,18 @@
 .tb-theme-toggle:hover {
   color: var(--tb-primary);
 }
+.select_board_wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.select_board_wrapper .select_board {
+  border-radius: var(--standard-border-radius);
+  background-color: var(--tb-surface);
+  color: var(--tb-text);
+  padding: 5px 3px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}

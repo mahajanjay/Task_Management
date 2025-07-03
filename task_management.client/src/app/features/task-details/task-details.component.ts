@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { Task, Comment } from '../../shared/task.model';
+import { Task, Comment } from '../../shared/models/task.model';
 
 @Component({
   selector: 'app-task-details',

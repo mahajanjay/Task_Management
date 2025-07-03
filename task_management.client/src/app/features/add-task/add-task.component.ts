@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Task } from '../../shared/task.model';
+import { Task } from '../../shared/models/task.model';
 
 @Component({
   selector: 'app-add-task',

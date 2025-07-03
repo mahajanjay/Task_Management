@@ -1,12 +1,20 @@
 <header class="tb-header" [class.tb-header--collapsed]="sidebarCollapsed">
   <div class="tb-header__left">
     <nav class="tb-header__nav">
-      <a href="#" class="tb-header__nav-link">Dashboard</a>
-      <a href="#" class="tb-header__nav-link">Projects</a>
-      <a href="#" class="tb-header__nav-link">Tasks</a>
     </nav>
   </div>
   <div class="tb-header__right">
+    <div class="select_board_wrapper">
+      <select class="select_board" name="" id="">
+        <option value="">board1</option>
+        <option value="">board2</option>
+      </select>
+      /
+      <select class="select_board" name="" id="">
+        <option value="">sprint1</option>
+        <option value="">sprint2</option>
+      </select>
+    </div>
     <button class="tb-theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
       <span *ngIf="!isDarkMode">🌙</span>
       <span *ngIf="isDarkMode">☀️</span>
