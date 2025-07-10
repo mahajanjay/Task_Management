@@ -1,6 +1,6 @@
 <div class="board">
   <div class="board-columns">
-    <div class="board-column" *ngFor="let column of board.columns; let colIdx = index">
+    <div class="board-column" *ngFor="let column of boardService.board.columns; let colIdx = index">
       <h3>{{ column.name }}</h3>
       <div
         cdkDropList
@@ -33,5 +33,5 @@
       </div>
     </div>
   </div>
-  <app-task-details *ngIf="selectedTask" [task]="selectedTask" (save)="saveTaskDetails($event)" (close)="closeTaskDetails()"></app-task-details>
+  <app-task-details *ngIf="selectedTask" [task]="selectedTask" (save)="boardService.saveTaskDetails($event)" (close)="closeTaskDetails()"></app-task-details>
 </div> 

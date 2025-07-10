@@ -1,5 +1,7 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, ViewChild, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { BoardsService } from '../../services/reusables/boards.service';
+import { BoardComponent } from '../../features/board/board.component';
 
 @Component({
   selector: 'app-boards-factory',
@@ -10,9 +12,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './boards-factory.component.scss'
 })
 export class BoardsFactoryComponent {
-  @ViewChild('boardsContainer') boardsContainer!: ElementRef;
-
+  @ViewChild('boardsContainer', { read: ViewContainerRef }) boardsContainer!: ViewContainerRef;
+  boardsService = inject(BoardsService);
   ngAfterViewInit() {
+    this.loadBoards();
+  }
 
+  loadBoards() {
+    this.boardsContainer.clear();
+
+    const boardRef = this.boardsContainer.createComponent(BoardComponent);
   }
 }
