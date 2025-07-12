@@ -1,49 +1,75 @@
-<div class="modal-overlay">
-  <div class="modal">
-    <form [formGroup]="form" (ngSubmit)="onSave()">
-      <h2>Edit Task</h2>
-      <input formControlName="title" placeholder="Title" required />
-      <textarea formControlName="description" placeholder="Description"></textarea>
-      <select formControlName="priority">
-        <option value="">Priority</option>
-        <option value="Low">Low</option>
-        <option value="Medium">Medium</option>
-        <option value="High">High</option>
-        <option value="Critical">Critical</option>
-      </select>
-      <input formControlName="assignee" placeholder="Assignee" />
-      <input formControlName="dueDate" type="date" placeholder="Due Date" />
-      <input formControlName="labels" placeholder="Labels (comma separated)" />
-      <input formControlName="storyPoints" type="number" placeholder="Story Points" />
-      <input formControlName="attachments" placeholder="Attachments (comma separated URLs)" />
-      <div class="subtasks">
-        <h4>Subtasks</h4>
-        <div *ngFor="let subtask of subtasks.controls; let i = index" [formGroup]="asFormGroup(subtask)">
-          <input formControlName="title" placeholder="Subtask title" />
-          <select formControlName="status">
-            <option value="todo">To Do</option>
-            <option value="in-progress">In Progress</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-        <button type="button" (click)="addSubtask()">Add Subtask</button>
+<div class="modal">
+  <form [formGroup]="form" (ngSubmit)="onSave()">
+    <h2>Edit Task</h2>
+    <input formControlName="title" placeholder="Title" required />
+    <textarea
+      formControlName="description"
+      placeholder="Description"
+    ></textarea>
+    <select formControlName="priority">
+      <option value="">Priority</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+      <option value="Critical">Critical</option>
+    </select>
+    <input formControlName="assignee" placeholder="Assignee" />
+    <input formControlName="dueDate" type="date" placeholder="Due Date" />
+    <input formControlName="labels" placeholder="Labels (comma separated)" />
+    <input
+      formControlName="storyPoints"
+      type="number"
+      placeholder="Story Points"
+    />
+    <input
+      formControlName="attachments"
+      placeholder="Attachments (comma separated URLs)"
+    />
+    <div class="subtasks">
+      <h4>Subtasks</h4>
+      <div
+        *ngFor="let subtask of subtasks.controls; let i = index"
+        [formGroup]="asFormGroup(subtask)"
+      >
+        <input formControlName="title" placeholder="Subtask title" />
+        <select formControlName="status">
+          <option value="todo">To Do</option>
+          <option value="in-progress">In Progress</option>
+          <option value="done">Done</option>
+        </select>
       </div>
-      <div class="comments">
-        <h4>Comments</h4>
-        <div *ngFor="let comment of comments.controls; let i = index" [formGroup]="asFormGroup(comment)">
-          <div><b>{{ comment.value.author }}</b> <small>{{ comment.value.createdAt | date:'short' }}</small></div>
-          <div>{{ comment.value.content }}</div>
+      <button type="button" (click)="addSubtask()">Add Subtask</button>
+    </div>
+    <div class="comments">
+      <h4>Comments</h4>
+      <div
+        *ngFor="let comment of comments.controls; let i = index"
+        [formGroup]="asFormGroup(comment)"
+      >
+        <div>
+          <b>{{ comment.value.author }}</b>
+          <small>{{ comment.value.createdAt | date : "short" }}</small>
         </div>
-        <div class="add-comment">
-          <input #authorInput placeholder="Your name" />
-          <input #contentInput placeholder="Add a comment" />
-          <button type="button" (click)="addComment(authorInput.value, contentInput.value); authorInput.value=''; contentInput.value=''">Add Comment</button>
-        </div>
+        <div>{{ comment.value.content }}</div>
       </div>
-      <div class="modal-actions">
-        <button type="submit" [disabled]="form.invalid">Save</button>
-        <button type="button" (click)="close.emit()">Close</button>
+      <div class="add-comment">
+        <input #authorInput placeholder="Your name" />
+        <input #contentInput placeholder="Add a comment" />
+        <button
+          type="button"
+          (click)="
+            addComment(authorInput.value, contentInput.value);
+            authorInput.value = '';
+            contentInput.value = ''
+          "
+        >
+          Add Comment
+        </button>
       </div>
-    </form>
-  </div>
-</div> 
+    </div>
+    <div class="modal-actions">
+      <button type="submit" [disabled]="form.invalid">Save</button>
+      <button type="button" (click)="close.emit()">Close</button>
+    </div>
+  </form>
+</div>

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
 
 interface WeatherForecast {
   date: string;
@@ -13,7 +14,8 @@ interface WeatherForecast {
   selector: 'app-root',
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    MatDialogModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

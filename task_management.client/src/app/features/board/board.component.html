@@ -24,7 +24,7 @@
             </div>
           </div>
         </ng-template>
-        <div class="task-card" *ngFor="let task of column.tasks" cdkDrag (click)="openTaskDetails(task)">
+        <div *ngFor="let task of column.tasks" cdkDrag (click)="openTaskDetails(task)">
           <ng-container *ngTemplateOutlet="taskCard; context: { $implicit: task }"></ng-container>
           <ng-template cdkDragPlaceholder>
             <div class="task-card placeholder"></div>
