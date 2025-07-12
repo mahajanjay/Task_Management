@@ -1,6 +1,10 @@
 <aside class="tb-sidebar" [class.tb-sidebar--collapsed]="collapsed">
   <div class="tb-sidebar__logo">
-    <img src="assets/logo-taskpilot.svg" alt="TaskPilot Logo" class="tb-sidebar__logo-img" />
+    <img
+      src="assets/logo-taskpilot.svg"
+      alt="TaskPilot Logo"
+      class="tb-sidebar__logo-img"
+    />
     <span class="tb-sidebar__app-name">TaskPilot</span>
   </div>
   <nav class="tb-sidebar__nav">
@@ -25,8 +29,16 @@
       </li>
     </ul>
   </nav>
-  <button class="tb-sidebar__toggle" (click)="onToggle()">
-    <span *ngIf="!collapsed">&#x25C0;</span>
-    <span *ngIf="collapsed">&#x25B6;</span>
+  <button
+    class="tb-sidebar__toggle"
+    [class.tb-sidebar__toggle--collapsed]="collapsed"
+    (click)="onToggle()"
+  >
+    <span *ngIf="!collapsed" class="material-symbols-outlined">
+      left_panel_close
+    </span>
+    <span *ngIf="collapsed" class="material-symbols-outlined">
+      left_panel_open
+    </span>
   </button>
-</aside> 
+</aside>

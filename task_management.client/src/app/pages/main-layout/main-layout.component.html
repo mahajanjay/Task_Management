@@ -1,8 +1,10 @@
-<app-header [sidebarCollapsed]="sidebarCollapsed"></app-header>
-<div class="main-layout">
-  <app-sidebar [collapsed]="sidebarCollapsed" (toggleSidebar)="toggleSidebar()"></app-sidebar>
-  <div class="main-layout__content" [class.main-layout__content--collapsed]="sidebarCollapsed">
-    <router-outlet></router-outlet>
+<div class="main_layout_container">
+  <app-header [sidebarCollapsed]="sidebarCollapsed"></app-header>
+  <div class="main-layout">
+    <app-sidebar [collapsed]="sidebarCollapsed" (toggleSidebar)="toggleSidebar()"></app-sidebar>
+    <div class="main-layout__content" [class.main-layout__content--collapsed]="sidebarCollapsed">
+      <router-outlet></router-outlet>
+    </div>
   </div>
+  <app-footer [sidebarCollapsed]="sidebarCollapsed"></app-footer>
 </div>
-<app-footer [sidebarCollapsed]="sidebarCollapsed"></app-footer>

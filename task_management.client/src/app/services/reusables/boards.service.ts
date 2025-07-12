@@ -3,6 +3,8 @@ import { Board } from '../../shared/models/board.model';
 import { Task } from '../../shared/models/task.model';
 import { MatDialog } from '@angular/material/dialog';
 import { TaskDetailsComponent } from '../../features/task-details/task-details.component';
+import { HeaderButtons } from '../../shared/models/core/HeaderButtons';
+import { AddTaskComponent } from '../../features/add-task/add-task.component';
 
 @Injectable({
   providedIn: 'root',
@@ -49,6 +51,14 @@ export class BoardsService {
     ],
   };
 
+  boardActionButtons: HeaderButtons[] = [
+    {
+      title: 'Add',
+      classList: 'primary-btn',
+      callback: () => this.openAddTask()
+    }
+  ]
+
   selectedTask = signal<Task | null>(null);
 
   saveTaskDetails(updatedTask: Task) {
@@ -74,5 +84,12 @@ export class BoardsService {
       height: '90%',
       maxWidth: '700px'
     });
+  }
+
+  openAddTask() {
+    console.log('Add Task');
+    this.dialog.open(AddTaskComponent, {
+      height: '90%'
+    })
   }
 }

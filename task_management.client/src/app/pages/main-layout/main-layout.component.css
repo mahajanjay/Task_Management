@@ -1,11 +1,11 @@
 .main-layout {
   display: flex;
-  min-height: calc(100vh - var(--tb-header-height) - 51px); /* header + footer height */
+  min-height: calc(100vh - var(--tb-header-height) - 34px); /* header + footer height */
 }
 .main-layout__content {
   flex: 1;
   margin-left: 220px;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
   transition: margin-left 0.2s;
   position: relative;
 }

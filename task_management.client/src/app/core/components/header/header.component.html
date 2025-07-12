@@ -4,6 +4,11 @@
     </nav>
   </div>
   <div class="tb-header__right">
+    <div class="boardButtons_wrapper">
+      @for (button of headerService.headerButtons(); track $index) {
+        <button [classList]="button.classList" (click)="button.callback()" > {{button.title}} </button>
+      }
+    </div>
     <div class="select_board_wrapper">
       <select class="select_board" name="" id="">
         <option value="">board1</option>

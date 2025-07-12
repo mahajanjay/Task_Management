@@ -10,6 +10,7 @@
 
   --standard-border-radius: 4px;
 }
+
 .tb-dark {
   --tb-primary: #90caf9;
   --tb-bg: #181a1b;
@@ -17,29 +18,44 @@
   --tb-text: #f4f6fa;
 }
 
-html, body {
-  height: 100%;
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100vh;
+  width: 100vw;
   font-family: 'Inter', Arial, sans-serif;
   background: var(--tb-bg);
   color: var(--tb-text);
   transition: background 0.2s, color 0.2s;
 }
 
-body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
+// body {
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+// }
 
-#root, app-root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
+// #root,
+// app-root {
+//   display: flex;
+//   flex-direction: column;
+//   min-height: 100vh;
+// }
 
 // Utility for smooth theme switching
 .tb-dark {
   transition: background 0.2s, color 0.2s;
+}
+
+.primary-btn {
+  background-color: var(--tb-primary);
+  color: var(--tb-surface);
+  border: none;
+  padding: 7px 10px;
+  border-radius: var(--standard-border-radius);
 }
