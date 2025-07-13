@@ -1,6 +1,6 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit()" class="add-task-form">
   <input formControlName="title" placeholder="Task title" required />
-  <div *ngIf="form.get('title')?.invalid && form.get('title')?.touched" class="error">Title is required</div>
+  <app-validation-error class="validation-errors" [control]="form.get('title')!"></app-validation-error>
   <input formControlName="description" placeholder="Description" />
   <select formControlName="priority">
     <option value="">Priority</option>

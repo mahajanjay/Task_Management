@@ -54,7 +54,7 @@ export class BoardsService {
   boardActionButtons: HeaderButtons[] = [
     {
       title: 'Add',
-      classList: 'primary-btn',
+      classList: 'btn primary-btn',
       callback: () => this.openAddTask()
     }
   ]

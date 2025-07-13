@@ -34,28 +34,25 @@ body {
   transition: background 0.2s, color 0.2s;
 }
 
-// body {
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-// }
-
-// #root,
-// app-root {
-//   display: flex;
-//   flex-direction: column;
-//   min-height: 100vh;
-// }
-
 // Utility for smooth theme switching
 .tb-dark {
   transition: background 0.2s, color 0.2s;
 }
 
+.btn {
+  border: none;
+  padding: 7px 10px;
+  background-color: transparent;
+}
+
 .primary-btn {
   background-color: var(--tb-primary);
   color: var(--tb-surface);
-  border: none;
-  padding: 7px 10px;
   border-radius: var(--standard-border-radius);
+}
+
+.validation-errors {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
 }

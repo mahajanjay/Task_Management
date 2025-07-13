@@ -2,11 +2,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Task } from '../../shared/models/task.model';
+import { ValidationErrorComponent } from '../../reusables/components/validation-error/validation-error.component';
+import { pattern, REGEX } from '../../shared/utils/validator';
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule,
+    ValidationErrorComponent
+  ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
 })
@@ -17,7 +23,7 @@ export class AddTaskComponent {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      title: ['', Validators.required],
+      title: ['', [Validators.required, pattern(REGEX.ALLOW_ALPHA_NUMERIC)]],
       description: [''],
       priority: [''],
       assignee: [''],
