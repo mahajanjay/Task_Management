@@ -2,20 +2,56 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
 :root {
-  --tb-primary: #1976d2;
-  --tb-bg: #f4f6fa;
-  --tb-surface: #fff;
-  --tb-text: #222;
-  --tb-header-height: 56px;
-
-  --standard-border-radius: 4px;
+  /* GitHub Light Theme */
+  --gh-bg: #f6f8fa;
+  --gh-surface: #ffffff;
+  --gh-border: #d0d7de;
+  --gh-text: #24292f;
+  --gh-muted-text: #57606a;
+  --gh-accent: #0969da;
+  --gh-accent-hover: #054da2;
+  --gh-success: #2da44e;
+  --gh-danger: #cf222e;
+  --gh-warning: #bf8700;
+  --gh-header-bg: #f6f8fa;
+  --gh-header-border: #d8dee4;
+  --gh-header-text: #24292f;
+  --gh-btn-bg: #f6f8fa;
+  --gh-btn-border: #d0d7de;
+  --gh-btn-hover-bg: #f3f4f6;
+  --gh-btn-text: #24292f;
+  --standard-border-radius: 6px;
 }
 
 .tb-dark {
-  --tb-primary: #90caf9;
-  --tb-bg: #181a1b;
-  --tb-surface: #23272b;
-  --tb-text: #f4f6fa;
+  /* GitHub Dark Theme */
+  --gh-bg: #0d1117;
+  --gh-surface: #161b22;
+  --gh-border: #30363d;
+  --gh-text: #c9d1d9;
+  --gh-muted-text: #8b949e;
+  --gh-accent: #58a6ff;
+  --gh-accent-hover: #1f6feb;
+  --gh-success: #3fb950;
+  --gh-danger: #f85149;
+  --gh-warning: #d29922;
+  --gh-header-bg: #161b22;
+  --gh-header-border: #21262d;
+  --gh-header-text: #c9d1d9;
+  --gh-btn-bg: #21262d;
+  --gh-btn-border: #30363d;
+  --gh-btn-hover-bg: #30363d;
+  --gh-btn-text: #c9d1d9;
+}
+
+.glass-card {
+  background: var(--tb-surface-glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: var(--standard-border-radius);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  color: var(--tb-text);
 }
 
 * {
@@ -29,8 +65,8 @@ body {
   height: 100vh;
   width: 100vw;
   font-family: 'Inter', Arial, sans-serif;
-  background: var(--tb-bg);
-  color: var(--tb-text);
+  background: var(--gh-bg);
+  color: var(--gh-text);
   transition: background 0.2s, color 0.2s;
 }
 
@@ -55,4 +91,59 @@ body {
   color: red;
   font-size: 14px;
   font-weight: 500;
+}
+
+/* Utility classes for GitHub-like buttons and surfaces */
+.gh-btn {
+  background: var(--gh-btn-bg);
+  color: var(--gh-btn-text);
+  border: 1px solid var(--gh-btn-border);
+  border-radius: var(--standard-border-radius);
+  padding: 0.5rem 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.gh-btn:hover:not(:disabled) {
+  background: var(--gh-btn-hover-bg);
+  color: var(--gh-accent);
+  border-color: var(--gh-accent);
+}
+.gh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.gh-card {
+  background: var(--gh-surface);
+  border: 1px solid var(--gh-border);
+  border-radius: var(--standard-border-radius);
+  box-shadow: 0 1.5px 6px rgba(27,31,35,0.04);
+  padding: 1.5rem 2rem;
+  color: var(--gh-text);
+}
+
+.gh-header {
+  background: var(--gh-header-bg);
+  border-bottom: 1px solid var(--gh-header-border);
+  color: var(--gh-header-text);
+}
+
+.gh-muted {
+  color: var(--gh-muted-text);
+}
+
+/* Keep old variables for compatibility */
+:root {
+  --tb-primary: var(--gh-accent);
+  --tb-bg: var(--gh-bg);
+  --tb-surface: var(--gh-surface);
+  --tb-text: var(--gh-text);
+  --tb-header-height: 56px;
+}
+.tb-dark {
+  --tb-primary: var(--gh-accent);
+  --tb-bg: var(--gh-bg);
+  --tb-surface: var(--gh-surface);
+  --tb-text: var(--gh-text);
 }
