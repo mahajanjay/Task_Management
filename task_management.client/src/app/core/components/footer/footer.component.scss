@@ -1,11 +1,13 @@
 .tb-footer {
-  background: var(--tb-surface);
-  color: var(--tb-text);
+  background: var(--gh-bg);
+  color: var(--gh-text);
   box-shadow: 0 -1px 8px rgba(0,0,0,0.03);
-  padding: 0.5rem 2rem;
+  padding: 0.4rem 2rem;
   font-size: 14px;
   margin-left: 220px;
   transition: margin-left 0.2s;
+  border-top: 1px solid var(--gh-border);
+  border-bottom: 1px solid var(--gh-border);
 }
 
 .tb-footer--collapsed {
@@ -32,11 +34,11 @@
 }
 
 .tb-footer__nav a {
-  color: var(--tb-text);
+  color: var(--gh-text);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .tb-footer__nav a:hover {
-  color: var(--tb-primary);
+  color: var(--gh-accent);
 }

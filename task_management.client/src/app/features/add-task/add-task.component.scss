@@ -9,22 +9,22 @@
   flex: 1 1 200px;
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--gh-border);
 }
 .add-task-form button {
   padding: 0.5rem 1rem;
-  background: var(--tb-primary);
-  color: #fff;
+  background: var(--gh-accent);
+  color: var(--gh-surface);
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 .add-task-form button:disabled {
-  background: #aaa;
+  background: var(--gh-btn-border);
   cursor: not-allowed;
 }
 .error {
-  color: #d32f2f;
+  color: var(--gh-danger);
   font-size: 0.9rem;
   flex-basis: 100%;
 } 

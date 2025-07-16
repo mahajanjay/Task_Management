@@ -4,7 +4,7 @@
   margin-top: 2rem;
 }
 .board-column {
-  background: var(--tb-surface);
+  background: var(--gh-surface);
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
   padding: 1rem;
@@ -12,11 +12,12 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  border: 1px solid var(--gh-border);
 }
 .board-column h3 {
   margin-top: 0;
   margin-bottom: 1rem;
-  color: var(--tb-primary);
+  color: var(--gh-text);
 }
 .task-list {
   min-height: 60px;
@@ -39,17 +40,17 @@
 }
 .task-card:hover {
   box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-  border-color: #90caf9;
+  border-color: var(--gh-accent);
   background: #f5faff;
 }
 .task-card:active {
   box-shadow: 0 2px 8px rgba(0,0,0,0.16);
-  border-color: #1976d2;
+  border-color: var(--gh-accent);
 }
 .task-title {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #1976d2;
+  color: var(--gh-accent);
   margin-bottom: 0.25rem;
 }
 .task-desc {
@@ -75,7 +76,7 @@
 }
 .task-meta span:nth-child(2)[ng-reflect-ng-if] { /* Assignee */
   background: #e3f2fd;
-  color: #1976d2;
+  color: var(--gh-accent);
 }
 .task-meta span:nth-child(3)[ng-reflect-ng-if] { /* Due */
   background: #fffde7;
@@ -101,7 +102,7 @@
 }
 .task-card.preview {
   box-shadow: 0 8px 24px rgba(25, 118, 210, 0.18);
-  border: 2px solid #1976d2;
+  border: 2px solid var(--gh-accent);
   background: #e3f2fd;
   opacity: 0.95;
 }
@@ -120,7 +121,7 @@
   transition: border 0.2s, background 0.2s;
 }
 .add-task-form input:focus {
-  border-color: #90caf9;
+  border-color: var(--gh-accent);
   background: #23272f;
   outline: none;
 }
@@ -130,7 +131,7 @@
 }
 .add-task-form button {
   padding: 0.5rem 1rem;
-  background: #1976d2;
+  background: var(--gh-accent);
   color: #fff;
   border: none;
   border-radius: 4px;
@@ -138,5 +139,5 @@
   transition: background 0.2s;
 }
 .add-task-form button:hover {
-  background: #1565c0;
+  background: var(--gh-accent-hover);
 } 

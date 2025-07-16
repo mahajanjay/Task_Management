@@ -4,13 +4,14 @@
   left: 0;
   height: 100vh;
   width: 220px;
-  background: var(--tb-surface);
-  color: var(--tb-text);
+  background: var(--gh-surface);
+  color: var(--gh-text);
   box-shadow: 2px 0 8px rgba(0,0,0,0.04);
   display: flex;
   flex-direction: column;
   z-index: 200;
   transition: width 0.2s;
+  border: 1px solid var(--gh-border);
 }
 .tb-sidebar__logo {
   display: flex;
@@ -18,7 +19,7 @@
   padding: 1.5rem 1rem 1rem 1rem;
   font-size: 1.3rem;
   font-weight: bold;
-  color: var(--tb-primary);
+  color: var(--gh-accent);
 }
 .tb-sidebar__logo-img {
   height: 2rem;
@@ -41,21 +42,21 @@
 .tb-sidebar__nav-link {
   display: block;
   padding: 0.9rem 2rem;
-  color: var(--tb-text);
+  color: var(--gh-text);
   text-decoration: none;
   font-weight: 500;
   border-left: 4px solid transparent;
   transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 .tb-sidebar__nav-link:hover {
-  background: var(--tb-primary);
-  color: #fff;
-  border-left: 4px solid var(--tb-primary);
+  background: var(--gh-accent);
+  color: var(--gh-surface);
+  border-left: 4px solid var(--gh-accent);
 }
 .tb-sidebar__toggle {
   background: none;
   border: none;
-  color: var(--tb-primary);
+  color: var(--gh-accent);
   font-size: 1.5rem;
   cursor: pointer;
   margin: 0 0 1.5rem 1rem;
@@ -71,7 +72,7 @@
   left: 30px !important;
 }
 .tb-sidebar__toggle:hover {
-  color: var(--tb-text);
+  color: var(--gh-text);
 }
 .tb-sidebar--collapsed {
   width: 60px !important;

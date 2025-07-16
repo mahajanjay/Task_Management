@@ -1,5 +1,5 @@
 .modal {
-  background: var(--tb-surface);
+  background: var(--gh-surface);
   border-radius: 8px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
   padding: 2rem;
@@ -12,7 +12,7 @@
   margin-bottom: 1rem;
   padding: 0.5rem;
   border-radius: 4px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--gh-border);
   font-size: 1rem;
 }
 .modal-actions {

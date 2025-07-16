@@ -19,19 +19,20 @@
   --gh-btn-bg: #f6f8fa;
   --gh-btn-border: #d0d7de;
   --gh-btn-hover-bg: #f3f4f6;
-  --gh-btn-text: #24292f;
+  --gh-btn-text: #fff;
   --standard-border-radius: 6px;
+  --tb-header-height: 56px;
 }
 
 .tb-dark {
   /* GitHub Dark Theme */
-  --gh-bg: #0d1117;
-  --gh-surface: #161b22;
-  --gh-border: #30363d;
-  --gh-text: #c9d1d9;
+  --gh-bg: #010409;
+  --gh-surface: #0D1117;
+  --gh-border: #2F353D;
+  --gh-text: #fff;
   --gh-muted-text: #8b949e;
-  --gh-accent: #58a6ff;
-  --gh-accent-hover: #1f6feb;
+  --gh-accent-hover: #58a6ff;
+  --gh-accent: #1f6feb;
   --gh-success: #3fb950;
   --gh-danger: #f85149;
   --gh-warning: #d29922;
@@ -41,7 +42,7 @@
   --gh-btn-bg: #21262d;
   --gh-btn-border: #30363d;
   --gh-btn-hover-bg: #30363d;
-  --gh-btn-text: #c9d1d9;
+  --gh-btn-text: #fff;
 }
 
 .glass-card {
@@ -76,25 +77,6 @@ body {
 }
 
 .btn {
-  border: none;
-  padding: 7px 10px;
-  background-color: transparent;
-}
-
-.primary-btn {
-  background-color: var(--tb-primary);
-  color: var(--tb-surface);
-  border-radius: var(--standard-border-radius);
-}
-
-.validation-errors {
-  color: red;
-  font-size: 14px;
-  font-weight: 500;
-}
-
-/* Utility classes for GitHub-like buttons and surfaces */
-.gh-btn {
   background: var(--gh-btn-bg);
   color: var(--gh-btn-text);
   border: 1px solid var(--gh-btn-border);
@@ -104,15 +86,50 @@ body {
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
 }
-.gh-btn:hover:not(:disabled) {
+
+.btn:hover:not(:disabled) {
   background: var(--gh-btn-hover-bg);
   color: var(--gh-accent);
   border-color: var(--gh-accent);
 }
-.gh-btn:disabled {
+
+.btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+// .primary-btn {
+//   background-color: var(--tb-primary);
+//   color: var(--tb-surface);
+//   border-radius: var(--standard-border-radius);
+// }
+
+.validation-errors {
+  color: red;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Utility classes for GitHub-like buttons and surfaces */
+// .gh-btn {
+//   background: var(--gh-btn-bg);
+//   color: var(--gh-btn-text);
+//   border: 1px solid var(--gh-btn-border);
+//   border-radius: var(--standard-border-radius);
+//   padding: 0.5rem 1rem;
+//   font-weight: 500;
+//   cursor: pointer;
+//   transition: background 0.2s, color 0.2s, border 0.2s;
+// }
+// .gh-btn:hover:not(:disabled) {
+//   background: var(--gh-btn-hover-bg);
+//   color: var(--gh-accent);
+//   border-color: var(--gh-accent);
+// }
+// .gh-btn:disabled {
+//   opacity: 0.6;
+//   cursor: not-allowed;
+// }
 
 .gh-card {
   background: var(--gh-surface);
@@ -134,16 +151,69 @@ body {
 }
 
 /* Keep old variables for compatibility */
-:root {
-  --tb-primary: var(--gh-accent);
-  --tb-bg: var(--gh-bg);
-  --tb-surface: var(--gh-surface);
-  --tb-text: var(--gh-text);
-  --tb-header-height: 56px;
+// :root {
+//   --tb-primary: var(--gh-accent);
+//   --tb-bg: var(--gh-bg);
+//   --tb-surface: var(--gh-surface);
+//   --tb-text: var(--gh-text);
+//   --tb-header-height: 56px;
+// }
+// .tb-dark {
+//   --tb-primary: var(--gh-accent);
+//   --tb-bg: var(--gh-bg);
+//   --tb-surface: var(--gh-surface);
+//   --tb-text: var(--gh-text);
+// }
+
+// GitHub-style button classes
+.gh-btn-default {
+  background: var(--gh-btn-bg);
+  color: var(--gh-text);
+  border: 1px solid var(--gh-btn-border);
+  border-radius: var(--standard-border-radius);
+  padding: 0.5rem 1.1rem;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 1.5px 4px rgba(27,31,35,0.03);
 }
-.tb-dark {
-  --tb-primary: var(--gh-accent);
-  --tb-bg: var(--gh-bg);
-  --tb-surface: var(--gh-surface);
-  --tb-text: var(--gh-text);
+.gh-btn-default:hover:not(:disabled) {
+  background: var(--gh-btn-hover-bg);
+  color: var(--gh-accent);
+  border-color: var(--gh-accent);
+}
+.gh-btn-default:active {
+  background: var(--gh-btn-hover-bg);
+  color: var(--gh-accent-hover);
+  border-color: var(--gh-accent-hover);
+}
+.gh-btn-default:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.gh-btn-primary {
+  background: var(--gh-accent);
+  color: var(--gh-btn-text);
+  border: 1px solid var(--gh-accent);
+  border-radius: var(--standard-border-radius);
+  padding: 0.3rem 1.0rem;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border 0.2s;
+  box-shadow: 0 1.5px 4px rgba(27,31,35,0.06);
+}
+.gh-btn-primary:hover:not(:disabled) {
+  background: var(--gh-accent-hover);
+  border-color: var(--gh-accent-hover);
+}
+.gh-btn-primary:active {
+  background: var(--gh-accent-hover);
+  border-color: var(--gh-accent-hover);
+}
+.gh-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
