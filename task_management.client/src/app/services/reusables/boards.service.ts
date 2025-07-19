@@ -87,9 +87,10 @@ export class BoardsService {
   }
 
   openAddTask() {
-    console.log('Add Task');
     this.dialog.open(AddTaskComponent, {
-      height: '90%'
+      height: '90vh',
+      width: '90vw',
+      maxWidth: '900px',
     })
   }
 }

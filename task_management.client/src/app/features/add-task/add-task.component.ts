@@ -4,6 +4,8 @@ import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angula
 import { Task } from '../../shared/models/task.model';
 import { ValidationErrorComponent } from '../../reusables/components/validation-error/validation-error.component';
 import { pattern, REGEX } from '../../shared/utils/validator';
+import { Priority } from '../../shared/constants/board';
+import { AddTaskSectionComponent } from '../../reusables/components/add-task-section/add-task-section.component';
 
 @Component({
   selector: 'app-add-task',
@@ -11,7 +13,8 @@ import { pattern, REGEX } from '../../shared/utils/validator';
   imports: [
     CommonModule, 
     ReactiveFormsModule,
-    ValidationErrorComponent
+
+    AddTaskSectionComponent,
   ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss'
@@ -20,6 +23,7 @@ export class AddTaskComponent {
   @Output() taskAdded = new EventEmitter<Partial<Task>>();
 
   form: FormGroup;
+  priority = Priority;
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({

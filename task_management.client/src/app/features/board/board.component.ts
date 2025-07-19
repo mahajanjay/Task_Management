@@ -1,10 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DragDropModule, CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { Board, BoardColumn } from '../../shared/models/board.model';
 import { Task } from '../../shared/models/task.model';
 import { FormsModule } from '@angular/forms';
-import { AddTaskComponent } from '../add-task/add-task.component';
 import { TaskDetailsComponent } from '../task-details/task-details.component';
 import { BoardsService } from '../../services/reusables/boards.service';
 

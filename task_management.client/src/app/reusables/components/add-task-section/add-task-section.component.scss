@@ -1,0 +1,22 @@
+.add-task-section_container .btn-setting {
+    color: var(--gh-muted-text);
+    border: none;
+    background-color: transparent;
+    border-radius: var(--standard-border-radius);
+    padding: 2px 10px;
+    margin-bottom: 10px;
+
+    .material-symbols-outlined {
+        font-size: 20px;
+    }
+}
+
+.add-task-section_container .btn-setting:hover {
+    background-color: #656c7633;
+}
+
+.add-task-section_container .section-content {
+    color: var(--gh-muted-text);
+    font-size: 13px;
+    padding: 2px 10px;
+}

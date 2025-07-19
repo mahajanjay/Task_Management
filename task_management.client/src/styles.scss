@@ -15,20 +15,23 @@
   --gh-warning: #bf8700;
   --gh-header-bg: #f6f8fa;
   --gh-header-border: #d8dee4;
-  --gh-header-text: #24292f;
   --gh-btn-bg: #f6f8fa;
   --gh-btn-border: #d0d7de;
   --gh-btn-hover-bg: #f3f4f6;
   --gh-btn-text: #fff;
-  --standard-border-radius: 6px;
   --tb-header-height: 56px;
+  --bg-color-muted: #f6f8fa;
+  
+  --standard-border-radius: 6px;
+  --standard-input-padding: 7px 12px;
+  --standard-font-size: 14px;
 }
 
 .tb-dark {
   /* GitHub Dark Theme */
   --gh-bg: #010409;
   --gh-surface: #0D1117;
-  --gh-border: #2F353D;
+  --gh-border: #3d444d;
   --gh-text: #fff;
   --gh-muted-text: #8b949e;
   --gh-accent-hover: #58a6ff;
@@ -38,11 +41,11 @@
   --gh-warning: #d29922;
   --gh-header-bg: #161b22;
   --gh-header-border: #21262d;
-  --gh-header-text: #c9d1d9;
   --gh-btn-bg: #21262d;
   --gh-btn-border: #30363d;
   --gh-btn-hover-bg: #30363d;
   --gh-btn-text: #fff;
+  --bg-color-muted: #151b23;
 }
 
 .glass-card {
@@ -110,27 +113,6 @@ body {
   font-weight: 500;
 }
 
-/* Utility classes for GitHub-like buttons and surfaces */
-// .gh-btn {
-//   background: var(--gh-btn-bg);
-//   color: var(--gh-btn-text);
-//   border: 1px solid var(--gh-btn-border);
-//   border-radius: var(--standard-border-radius);
-//   padding: 0.5rem 1rem;
-//   font-weight: 500;
-//   cursor: pointer;
-//   transition: background 0.2s, color 0.2s, border 0.2s;
-// }
-// .gh-btn:hover:not(:disabled) {
-//   background: var(--gh-btn-hover-bg);
-//   color: var(--gh-accent);
-//   border-color: var(--gh-accent);
-// }
-// .gh-btn:disabled {
-//   opacity: 0.6;
-//   cursor: not-allowed;
-// }
-
 .gh-card {
   background: var(--gh-surface);
   border: 1px solid var(--gh-border);
@@ -149,21 +131,6 @@ body {
 .gh-muted {
   color: var(--gh-muted-text);
 }
-
-/* Keep old variables for compatibility */
-// :root {
-//   --tb-primary: var(--gh-accent);
-//   --tb-bg: var(--gh-bg);
-//   --tb-surface: var(--gh-surface);
-//   --tb-text: var(--gh-text);
-//   --tb-header-height: 56px;
-// }
-// .tb-dark {
-//   --tb-primary: var(--gh-accent);
-//   --tb-bg: var(--gh-bg);
-//   --tb-surface: var(--gh-surface);
-//   --tb-text: var(--gh-text);
-// }
 
 // GitHub-style button classes
 .gh-btn-default {
@@ -216,4 +183,52 @@ body {
 .gh-btn-primary:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+/************************Classess**************************/
+
+.input-txt {
+  outline: none;
+  background-color: var(--bg-color-muted);
+  width: 100%;
+  color: var(--gh-text);
+  border-radius: var(--standard-border-radius);
+  padding: var(--standard-input-padding);
+  border: 1px solid var(--gh-border);
+}
+
+.input-txt:focus-visible {
+  background-color: var(--gh-bg);
+  box-shadow:  0 0 0 1px var(--gh-accent);
+  outline: 1px solid var(--gh-accent);
+}
+
+/************************Utility Classess**************************/
+
+.p-10 {
+  padding: 10px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.gap {
+  gap: 10px;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.w-100 {
+  width: 100%;
 }
