@@ -1,18 +1,26 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef, ViewChild } from '@angular/core';
 
 export interface AddTaskSectionTitle {
   title: string,
-  callback: (title: string) => void
+  callback?: (title: string) => void,
+  type: ContentType,
+  defaultContentText: string
+}
+
+export interface AddTaskSectionContentItem {
+  title: string,
+  value: any,
+  styles?: { [key: string]: string },
+  icon?: string
 }
 
 export interface AddTaskSectionContent{
-  title: string,
-  value: any,
-  icon: string
+  sectionTitle: AddTaskSectionTitle,
+  contentList: AddTaskSectionContentItem[],
 }
 
-export type ContentType = 'chip' | 'strip'
+export type ContentType = 'chip' | 'strip' | 'input';
 
 @Component({
   selector: 'app-add-task-section',
@@ -23,9 +31,8 @@ export type ContentType = 'chip' | 'strip'
   styleUrl: './add-task-section.component.scss'
 })
 export class AddTaskSectionComponent {
-  @Input() title!: AddTaskSectionTitle;
-  @Input() contentDefaultText!: string;
-  @Input() contentType: ContentType = 'chip';
-  @Input() content!: AddTaskSectionContent[]
+  @Input() sectionList!: AddTaskSectionContent[];
+
+  @ViewChild('contentTemplate', { static: true }) contentTemplate!: TemplateRef<any>;
 
 }
