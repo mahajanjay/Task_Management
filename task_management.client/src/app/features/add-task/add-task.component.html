@@ -1,23 +1,28 @@
 <div class="add-task_container p-10">
   <form [formGroup]="form" (ngSubmit)="onSubmit()" class="add-task-form">
-    
     <section class="section-header w-100 d-flex justify-between gap">
-      <input name="taskName" type="text" class="input-txt" placeholder="Task name" />
+      <input
+        name="taskName"
+        type="text"
+        class="input-txt"
+        placeholder="Task name"
+      />
       <select class="input-txt" name="priority">
         @for (item of priority | keyvalue; track $index) {
-          <option value="">{{item.value}}</option>
+        <option value="">{{ item.value }}</option>
         }
       </select>
     </section>
 
     <section class="section-content w-100 d-flex justify-between gap">
-      <div class="left">
-
-      </div>
+      <div class="left"></div>
       <div class="right">
-        <app-add-task-section [sectionList]="taskMetaDataList" ></app-add-task-section>
+        <app-add-task-section
+          [sectionList]="taskMetaDataList"
+          (sectionChanged)="onSectionChanged($event)"
+        >
+        </app-add-task-section>
       </div>
     </section>
-
-  </form> 
+  </form>
 </div>

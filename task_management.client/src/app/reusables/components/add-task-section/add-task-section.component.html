@@ -1,5 +1,5 @@
 <div class="w-100 add-task-section_container">
-  @for(item of sectionList; track $index;) { @let last = $last;
+  @for(item of sectionList; let sectionIndex = $index; track $index) { @let last = $last;
 
   <div class="task_section" [ngClass]="{ 'border-bottom': !last }">
     <button class="w-100 btn-setting d-flex justify-between align-center">
@@ -10,19 +10,19 @@
       <section class="section-content">
         @switch(item.sectionTitle.type) {
           @case('strip') {
-            @for(content of item.contentList; track $index;) {
-              <ng-container *ngTemplateOutlet="contentTemplateStrip; context: { $implicit: content }"></ng-container>
+            @for(content of item.contentList; let contentIndex = $index; track $index;) {
+              <ng-container *ngTemplateOutlet="contentTemplateStrip; context: { $implicit: content, sectionIndex, contentIndex }"></ng-container>
             }
           }
           @case ('chip') {
             <div class="d-flex gap">
-              @for(content of item.contentList; track $index;) {
-                <ng-container *ngTemplateOutlet="contentTemplateChip; context: { $implicit: content }"></ng-container>
+              @for(content of item.contentList; let contentIndex = $index; track $index;) {
+                <ng-container *ngTemplateOutlet="contentTemplateChip; context: { $implicit: content, sectionIndex, contentIndex }"></ng-container>
               }
             </div>
           }
           @case ('input') {
-              <ng-container *ngTemplateOutlet="contentTemplateInput; context: { $implicit: item.contentList[0] }"></ng-container>
+              <ng-container *ngTemplateOutlet="contentTemplateInput; context: { $implicit: item.contentList[0], sectionIndex, contentIndex: 0 }"></ng-container>
           }
         }
       </section>
@@ -35,21 +35,21 @@
   }
 </div>
 
-<ng-template #contentTemplateStrip let-content>
-  <div class="content-strip">
-    @if (content?.icon) {
-    <span> person </span>    
-  }
-    <span>{{ content.title }}</span>
-  </div>
-</ng-template>
-
-<ng-template #contentTemplateChip let-content>
-  <div class="content-chip" [ngStyle]="content.styles">
+<ng-template #contentTemplateChip let-content let-sectionIndex="sectionIndex" let-contentIndex="contentIndex">
+  <div class="content-chip" [ngStyle]="content.styles"
+       [class.selected]="content.selected"
+       (click)="onSelect(sectionIndex, contentIndex)">
     {{ content.title }}
   </div>
 </ng-template>
 
-<ng-template #contentTemplateInput let-content>
-  <input type="text" class="input-txt" [value]="content.value">
+<ng-template #contentTemplateStrip let-content let-sectionIndex="sectionIndex" let-contentIndex="contentIndex">
+  <div class="content-strip" [class.selected]="content.selected"
+       (click)="onSelect(sectionIndex, contentIndex)">
+  </div>
+</ng-template>
+
+<ng-template #contentTemplateInput let-content let-sectionIndex="sectionIndex" let-contentIndex="contentIndex">
+  <input type="text" class="input-txt" [value]="content.value"
+    (input)="onInputChange(sectionIndex, contentIndex, $event)">
 </ng-template>
