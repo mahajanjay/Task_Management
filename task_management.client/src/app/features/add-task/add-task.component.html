@@ -15,7 +15,13 @@
     </section>
 
     <section class="section-content w-100 d-flex justify-between gap">
-      <div class="left"></div>
+      <div class="left">
+        <app-add-task-content 
+          [taskContentData]="taskContentData"
+          (contentChanged)="onContentChanged($event)"
+        >
+      </app-add-task-content>
+      </div>
       <div class="right">
         <app-add-task-section
           [sectionList]="taskMetaDataList"
@@ -23,6 +29,13 @@
         >
         </app-add-task-section>
       </div>
+    </section>
+
+    <section class="section-footer">
+      <button type="button" class="gh-btn-default" (click)="onCancel()">
+        Cancel
+      </button>
+      <button type="submit" class="gh-btn-primary">Add Task</button>
     </section>
   </form>
 </div>

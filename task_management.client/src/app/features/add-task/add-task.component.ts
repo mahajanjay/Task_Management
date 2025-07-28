@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ReactiveFormsModule,
@@ -7,7 +7,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Task } from '../../shared/models/task.model';
-import { ValidationErrorComponent } from '../../reusables/components/validation-error/validation-error.component';
 import { pattern, REGEX } from '../../shared/utils/validator';
 import { Priority } from '../../shared/constants/board';
 import {
@@ -15,11 +14,18 @@ import {
   AddTaskSectionContent,
 } from '../../reusables/components/add-task-section/add-task-section.component';
 import { hexToRGBA } from '../../shared/utils/board';
+import { AddTaskContentComponent, TaskContentData } from '../../reusables/components/add-task-content/add-task-content.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-task',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, AddTaskSectionComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule, 
+    AddTaskSectionComponent,
+    AddTaskContentComponent
+  ],
   templateUrl: './add-task.component.html',
   styleUrl: './add-task.component.scss',
 })
@@ -78,6 +84,12 @@ export class AddTaskComponent {
     },
   ];
 
+  taskContentData: TaskContentData = {
+    description: 'Ganpati Bappa Morya',
+  };
+
+  private dialog = inject(MatDialog);
+
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
       title: ['', [Validators.required, pattern(REGEX.ALLOW_ALPHA_NUMERIC)]],
@@ -119,5 +131,15 @@ export class AddTaskComponent {
     // sectionState contains selected items and input values for each section
     console.log(sectionState);
     // You can process or store this data as needed
+  }
+
+  onContentChanged(contentData: TaskContentData) {
+    this.taskContentData = contentData;
+    console.log('Content changed:', contentData);
+  }
+  
+  onCancel() {
+    this.form.reset();
+    this.dialog.closeAll();
   }
 }

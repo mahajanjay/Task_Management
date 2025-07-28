@@ -88,7 +88,6 @@ export class BoardsService {
 
   openAddTask() {
     this.dialog.open(AddTaskComponent, {
-      height: '90vh',
       width: '90vw',
       maxWidth: '900px',
     })

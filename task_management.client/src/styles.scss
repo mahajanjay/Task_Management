@@ -138,9 +138,9 @@ body {
   color: var(--gh-text);
   border: 1px solid var(--gh-btn-border);
   border-radius: var(--standard-border-radius);
-  padding: 0.5rem 1.1rem;
+  padding: 0.4rem 1.0rem;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
   box-shadow: 0 1.5px 4px rgba(27,31,35,0.03);
@@ -165,9 +165,9 @@ body {
   color: var(--gh-btn-text);
   border: 1px solid var(--gh-accent);
   border-radius: var(--standard-border-radius);
-  padding: 0.3rem 1.0rem;
+  padding: 0.4rem 1.0rem;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
   box-shadow: 0 1.5px 4px rgba(27,31,35,0.06);

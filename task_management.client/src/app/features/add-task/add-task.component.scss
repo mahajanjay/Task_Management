@@ -19,10 +19,19 @@
 }
 
 .add-task-form .section-content .left {
-  flex-basis: 60%;
+  flex-basis: 65%;
+  padding: 20px 10px 0 0;
 }
 
 .add-task-form .section-content .right {
-  flex-basis: 40%;
-  padding: 10px 0 0 10px;
+  flex-basis: 35%;
+  padding: 20px 0 0 10px;
+}
+
+.section-footer {
+  display: flex;
+  gap: 10px;
+  float: right;
+  margin-top: 70px;
+  margin-right: 10px;
 }
