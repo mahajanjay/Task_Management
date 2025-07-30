@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatDialogModule } from '@angular/material/dialog';
+import { THEME } from './shared/constants/core';
+import { ThemeService } from './services/core/theme.service';
 
 interface WeatherForecast {
   date: string;
@@ -23,7 +25,14 @@ interface WeatherForecast {
 export class AppComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() { }
-
   title = 'task_management.client';
+
+  private themeService = inject(ThemeService);
+
+  ngOnInit() { 
+    this.themeService.isDarkMode();
+  }
+
+    
+
 }
