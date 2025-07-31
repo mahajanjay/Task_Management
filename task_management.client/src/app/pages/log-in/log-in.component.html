@@ -1,1 +1,60 @@
-<p>log-in works!</p>
+<div class="login_container">
+  <div class="login-content">
+    <div class="login-card">
+      <div class="login-header">
+        <h1>Welcome Back</h1>
+        <p class="login-subtitle">Sign in to your TaskPilot account</p>
+      </div>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div class="form-group">
+          <label for="email" class="form-label">Email Address</label>
+          <input
+            id="email"
+            type="email"
+            formControlName="email"
+            class="input-txt"
+            placeholder="Enter your email address"
+            [class.error]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+          />
+          <div class="error-message" *ngIf="getFieldError('email')">
+            {{ getFieldError('email') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password" class="form-label">Password</label>
+          <input
+            id="password"
+            type="password"
+            formControlName="password"
+            class="input-txt"
+            placeholder="Enter your password"
+            [class.error]="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+          />
+          <div class="error-message" *ngIf="getFieldError('password')">
+            {{ getFieldError('password') }}
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button 
+            type="submit" 
+            class="gh-btn-primary login-btn"
+            [disabled]="isSubmitting"
+          >
+            <span *ngIf="!isSubmitting">Sign In</span>
+            <span *ngIf="isSubmitting">Signing In...</span>
+          </button>
+        </div>
+
+        <div class="login-footer">
+          <p class="register-link">
+            Don't have an account? 
+            <a href="#" class="link-primary">Create one</a>
+          </p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
