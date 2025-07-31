@@ -12,7 +12,6 @@ namespace task_management.Shared.Entities
         public int Id { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public string UserName { get; set; }
 
         [MinLength(8, ErrorMessage = "Password must be at least 8 characters long.")]
         public string Password { get; set; }

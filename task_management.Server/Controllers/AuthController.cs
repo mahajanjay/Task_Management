@@ -24,7 +24,7 @@ namespace task_management.Server.Controllers
         [HttpPost]
         public async Task<ActionResult<LoginResponse>> Post([FromBody] DTO.Login login)
         {
-            Response<DTO.User> serviceResponse = await _authService.AuthenticateUserAsync(login.UserName, login.Password);
+            Response<DTO.User> serviceResponse = await _authService.AuthenticateUserAsync(login.Email, login.Password);
 
             if (serviceResponse.ErrorMessages != null)
             {
@@ -37,7 +37,7 @@ namespace task_management.Server.Controllers
                 return Unauthorized(errorResponse);
             }
 
-            Response<LoginResponse> tokenResponse = _authService.GenerateJwtToken(serviceResponse.Result.UserName, serviceResponse.Result.RoleId.ToString());
+            Response<LoginResponse> tokenResponse = _authService.GenerateJwtToken(serviceResponse.Result.Email, serviceResponse.Result.RoleId.ToString());
 
             if (tokenResponse.ErrorMessages != null)
             {

@@ -23,7 +23,7 @@ namespace task_management.Server.Services
         {
             try
             {
-                IEnumerable<Shared.Entities.User> user = await _unitOfWork.Users.FindAsync(u => u.UserName == email && u.Password == password);
+                IEnumerable<Shared.Entities.User> user = await _unitOfWork.Users.FindAsync(u => u.Email == email && u.Password == password);
 
                 List<Shared.Entities.User> userList = user.ToList();
 
@@ -34,7 +34,6 @@ namespace task_management.Server.Services
                         Id = userList[0].Id,
                         Name = userList[0].Name,
                         Email = userList[0].Email,
-                        UserName = userList[0].UserName,
                         RoleId = userList[0].RoleId,
                         TeamId = userList[0].TeamId
                     };
