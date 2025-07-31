@@ -1,5 +1,122 @@
 .register_container {
-    background-color: var(--gh-bg);
-    width: 100vw;
-    height: 100vh;
+  background-color: var(--gh-bg);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.register-content {
+  width: 100%;
+  max-width: 400px;
+}
+
+.register-card {
+  background: var(--gh-surface);
+  border: 1px solid var(--gh-border);
+  border-radius: var(--standard-border-radius);
+  box-shadow: 0 1.5px 6px rgba(27,31,35,0.04);
+  padding: 2rem;
+  color: var(--gh-text);
+}
+
+.register-header {
+  text-align: center;
+  margin-bottom: 2rem;
+
+  h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--gh-text);
+    margin-bottom: 0.5rem;
+  }
+
+  .register-subtitle {
+    color: var(--gh-muted-text);
+    font-size: 0.9rem;
+    margin: 0;
+  }
+}
+
+.register-form {
+  .form-group {
+    margin-bottom: 1.5rem;
+
+    .form-label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gh-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .input-txt {
+      width: 100%;
+      transition: all 0.2s ease;
+
+      &.error {
+        border-color: var(--gh-danger);
+        box-shadow: 0 0 0 1px var(--gh-danger);
+      }
+    }
+
+    .error-message {
+      color: var(--gh-danger);
+      font-size: 0.8rem;
+      margin-top: 0.25rem;
+      font-weight: 500;
+    }
+  }
+
+  .form-actions {
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+
+    .register-btn {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+  }
+
+  .register-footer {
+    text-align: center;
+    border-top: 1px solid var(--gh-border);
+    padding-top: 1.5rem;
+
+    .login-link {
+      color: var(--gh-muted-text);
+      font-size: 0.9rem;
+      margin: 0;
+
+      .link-primary {
+        color: var(--gh-accent);
+        text-decoration: none;
+        font-weight: 500;
+
+        &:hover {
+          color: var(--gh-accent-hover);
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .register_container {
+    padding: 10px;
+  }
+
+  .register-card {
+    padding: 1.5rem;
+  }
+
+  .register-header h1 {
+    font-size: 1.25rem;
+  }
 }
