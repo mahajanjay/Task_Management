@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { ValidationErrorComponent } from '../../reusables/components/validation-error/validation-error.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule,
+    RouterModule,
+
+    ValidationErrorComponent,
+  ],
   templateUrl: './log-in.component.html',
   styleUrl: './log-in.component.scss'
 })

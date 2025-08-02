@@ -17,9 +17,7 @@
             placeholder="Enter your full name"
             [class.error]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched"
           />
-          <div class="error-message" *ngIf="getFieldError('name')">
-            {{ getFieldError('name') }}
-          </div>
+          <app-validation-error [control]="registerForm.get('name')"></app-validation-error>
         </div>
 
         <div class="form-group">
@@ -32,9 +30,7 @@
             placeholder="Enter your email address"
             [class.error]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
           />
-          <div class="error-message" *ngIf="getFieldError('email')">
-            {{ getFieldError('email') }}
-          </div>
+          <app-validation-error [control]="registerForm.get('email')"></app-validation-error>
         </div>
 
         <div class="form-group">
@@ -47,9 +43,7 @@
             placeholder="Create a strong password"
             [class.error]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
           />
-          <div class="error-message" *ngIf="getFieldError('password')">
-            {{ getFieldError('password') }}
-          </div>
+          <app-validation-error [control]="registerForm.get('password')"></app-validation-error>
         </div>
 
         <div class="form-group">
@@ -62,9 +56,7 @@
             placeholder="Confirm your password"
             [class.error]="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched"
           />
-          <div class="error-message" *ngIf="getFieldError('confirmPassword')">
-            {{ getFieldError('confirmPassword') }}
-          </div>
+          <app-validation-error [control]="registerForm.get('confirmPassword')"></app-validation-error>
         </div>
 
         <div class="form-actions">
@@ -81,7 +73,7 @@
         <div class="register-footer">
           <p class="login-link">
             Already have an account? 
-            <a href="#" class="link-primary">Sign in</a>
+            <a routerLink="/login" class="link-primary">Sign in</a>
           </p>
         </div>
       </form>

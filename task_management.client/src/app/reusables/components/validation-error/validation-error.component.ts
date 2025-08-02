@@ -11,7 +11,7 @@ import { getValidatorErrorMessage } from '../../../shared/utils/validator';
 })
 export class ValidationErrorComponent {
 
-  @Input() control!: AbstractControl;
+  @Input() control!: AbstractControl | null;
 
   get errorMessages() {
     for(const validatorName in this.control?.errors) {

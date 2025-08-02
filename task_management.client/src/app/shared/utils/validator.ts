@@ -7,7 +7,9 @@ export const getValidatorErrorMessage = (validatorName: string, validatorErrors?
 
 const messages = new Map<string, { message: string, validtorErrorsKey?: string[] }>([
     ['required', { message: 'This field is required' }],
-    ['minlength', { message: 'Password must be atleast {0} characters long', validtorErrorsKey: ['requiredLength'] }],
+    ['email', { message: 'Email should be like example@domain.com' }],
+    ['passwordMismatch', { message: 'Password should match.' }],
+    ['minlength', { message: 'Field must be atleast {0} characters long', validtorErrorsKey: ['requiredLength'] }],
 ]);
 
 function stringFormat(template: string | undefined, ...args: any[]) {

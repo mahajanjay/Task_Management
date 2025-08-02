@@ -21,7 +21,7 @@
   --gh-btn-text: #fff;
   --tb-header-height: 56px;
   --bg-color-muted: #f6f8fa;
-  
+
   --standard-border-radius: 6px;
   --standard-input-padding: 7px 12px;
   --standard-font-size: 14px;
@@ -108,8 +108,9 @@ body {
 // }
 
 .validation-errors {
-  color: red;
-  font-size: 14px;
+  color: var(--gh-danger);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
   font-weight: 500;
 }
 
@@ -117,7 +118,7 @@ body {
   background: var(--gh-surface);
   border: 1px solid var(--gh-border);
   border-radius: var(--standard-border-radius);
-  box-shadow: 0 1.5px 6px rgba(27,31,35,0.04);
+  box-shadow: 0 1.5px 6px rgba(27, 31, 35, 0.04);
   padding: 1.5rem 2rem;
   color: var(--gh-text);
 }
@@ -143,18 +144,21 @@ body {
   font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
-  box-shadow: 0 1.5px 4px rgba(27,31,35,0.03);
+  box-shadow: 0 1.5px 4px rgba(27, 31, 35, 0.03);
 }
+
 .gh-btn-default:hover:not(:disabled) {
   background: var(--gh-btn-hover-bg);
   color: var(--gh-accent);
   border-color: var(--gh-accent);
 }
+
 .gh-btn-default:active {
   background: var(--gh-btn-hover-bg);
   color: var(--gh-accent-hover);
   border-color: var(--gh-accent-hover);
 }
+
 .gh-btn-default:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -170,16 +174,19 @@ body {
   font-size: 0.9rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s, border 0.2s;
-  box-shadow: 0 1.5px 4px rgba(27,31,35,0.06);
+  box-shadow: 0 1.5px 4px rgba(27, 31, 35, 0.06);
 }
+
 .gh-btn-primary:hover:not(:disabled) {
   background: var(--gh-accent-hover);
   border-color: var(--gh-accent-hover);
 }
+
 .gh-btn-primary:active {
   background: var(--gh-accent-hover);
   border-color: var(--gh-accent-hover);
 }
+
 .gh-btn-primary:disabled {
   opacity: 0.6;
   cursor: not-allowed;
@@ -199,7 +206,7 @@ body {
 
 .input-txt:focus-visible {
   background-color: var(--gh-bg);
-  box-shadow:  0 0 0 1px var(--gh-accent);
+  box-shadow: 0 0 0 1px var(--gh-accent);
   outline: 1px solid var(--gh-accent);
 }
 
