@@ -21,13 +21,13 @@ namespace task_management.Server.Controllers
         [Authorize]
         [MapToApiVersion("1.0")]
         [HttpGet]
-        public async Task<ActionResult<ApiResponse<List<User>>>> Get()
+        public async Task<ActionResult<ApiResponse<UserResponse>>> Get()
         {
-            Response<List<User>> serviceResponse = await _userService.GetAllUsersAsync();
+            Response<UserResponse> serviceResponse = await _userService.GetAllUsersAsync();
 
             if(serviceResponse.ErrorMessages != null)
             {
-                ApiResponse<List<User>> errorResponse = new ApiResponse<List<User>>
+                ApiResponse<UserResponse> errorResponse = new ApiResponse<UserResponse>
                 {
                     Message = serviceResponse.ErrorMessages,
                     Success = false
@@ -36,7 +36,7 @@ namespace task_management.Server.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, errorResponse);
             }
 
-            return Ok(new ApiResponse<List<User>>
+            return Ok(new ApiResponse<UserResponse>
             {
                 Data = serviceResponse.Result,
                 Success = true,
@@ -45,14 +45,14 @@ namespace task_management.Server.Controllers
 
         [Authorize]
         [MapToApiVersion("1.0")]
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ApiResponse<User>>> Get([FromRoute] int id)
+        [HttpGet("{id}")]   
+        public async Task<ActionResult<ApiResponse<UserInfo>>> Get([FromRoute] int id)
         {
-            Response<User> serviceResponse = await _userService.GetUserByIdAsync(id);
+            Response<UserInfo> serviceResponse = await _userService.GetUserByIdAsync(id);
 
             if (serviceResponse.ErrorMessages != null)
             {
-                ApiResponse<User> errorMessage = new ApiResponse<User>
+                ApiResponse<UserInfo> errorMessage = new ApiResponse<UserInfo>
                 {
                     Message = serviceResponse.ErrorMessages,
                     Success = false
@@ -60,7 +60,7 @@ namespace task_management.Server.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, errorMessage);
             }
 
-            return Ok(new ApiResponse<User>
+            return Ok(new ApiResponse<UserInfo>
             {
                 Data = serviceResponse.Result,
                 Success = true,
@@ -70,7 +70,7 @@ namespace task_management.Server.Controllers
         [AllowAnonymous]
         [MapToApiVersion("1.0")]
         [HttpPost]
-        public async Task<ActionResult<ApiResponse<int>>> Post([FromBody] User user)
+        public async Task<ActionResult<ApiResponse<int>>> Post([FromBody] UserInfo user)
         {
             Response<int> serviceResponse = await _userService.CreateUserAsync(user);
 
@@ -94,7 +94,7 @@ namespace task_management.Server.Controllers
         [Authorize]
         [MapToApiVersion("1.0")]
         [HttpPut("id")]
-        public async Task<ActionResult<ApiResponse<int>>> Update([FromBody] User user)
+        public async Task<ActionResult<ApiResponse<int>>> Update([FromBody] UserInfo user)
         {
             Response<int> serviceResponse = await _userService.UpdateUserAsync(user);
 

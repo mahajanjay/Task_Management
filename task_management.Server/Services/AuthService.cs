@@ -19,7 +19,7 @@ namespace task_management.Server.Services
             _configuration = configuration;
         }
 
-        public async Task<Response<DTO.User>> AuthenticateUserAsync(string email, string password)
+        public async Task<Response<DTO.UserInfo>> AuthenticateUserAsync(string email, string password)
         {
             try
             {
@@ -29,7 +29,7 @@ namespace task_management.Server.Services
 
                 if(userList.Count > 0)
                 {
-                    DTO.User userDto = new DTO.User
+                    DTO.UserInfo userDto = new DTO.UserInfo
                     {
                         Id = userList[0].Id,
                         Name = userList[0].Name,
@@ -38,14 +38,14 @@ namespace task_management.Server.Services
                         TeamId = userList[0].TeamId
                     };
 
-                    return new Response<DTO.User>
+                    return new Response<DTO.UserInfo>
                     {
                         Result = userDto
                     };
                 }
                 else
                 {
-                    return new Response<DTO.User>
+                    return new Response<DTO.UserInfo>
                     {
                         ErrorMessages = "User not found."
                     };
@@ -53,7 +53,7 @@ namespace task_management.Server.Services
             }
             catch (Exception ex)
             {
-                return new Response<DTO.User>
+                return new Response<DTO.UserInfo>
                 {
                     ErrorMessages = ex.Message
                 };

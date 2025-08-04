@@ -12,13 +12,13 @@ namespace task_management.Server.Services
             _unitOfWork = unitOfWork;
         }
 
-        public async Task<Response<DTO.User>> GetUserByIdAsync(int id)
+        public async Task<Response<DTO.UserInfo>> GetUserByIdAsync(int id)
         {
             try
             {
                 var userEntity = await _unitOfWork.Users.GetByIdAsync(id);
 
-                User user = new DTO.User
+                UserInfo user = new DTO.UserInfo
                 {
                     Id = userEntity.Id,
                     Name = userEntity.Name,
@@ -27,14 +27,14 @@ namespace task_management.Server.Services
                     TeamId = userEntity.TeamId
                 };
 
-                return new Response<DTO.User>
+                return new Response<DTO.UserInfo>
                 {
                     Result = user,
                 };
             }
             catch(Exception ex)
             {
-                return new Response<DTO.User>
+                return new Response<DTO.UserInfo>
                 {
                     ErrorMessages = ex.Message
                 };
@@ -42,12 +42,13 @@ namespace task_management.Server.Services
 
         }
 
-        public async Task<Response<List<DTO.User>>> GetAllUsersAsync()
+        public async Task<Response<UserResponse>> GetAllUsersAsync()
         {
             try
             {
                 var userEntities = await _unitOfWork.Users.GetAllAsync();
-                List<User> users = userEntities.Select(userEntity => new DTO.User
+                UserResponse userResponse = new UserResponse();
+                userResponse.Users = userEntities.Select(userEntity => new DTO.UserInfo
                 {
                     Id = userEntity.Id,
                     Name = userEntity.Name,
@@ -56,21 +57,21 @@ namespace task_management.Server.Services
                     TeamId = userEntity.TeamId
                 }).ToList();
                     
-                return new Response<List<DTO.User>>
+                return new Response<UserResponse>
                 {
-                    Result = users
+                    Result = userResponse
                 };
             }
             catch(Exception ex)
             {
-                return new Response<List<DTO.User>>
+                return new Response<UserResponse>
                 {
                     ErrorMessages = ex.Message
                 };
             }
         }
 
-        public async Task<Response<int>> CreateUserAsync(DTO.User user)
+        public async Task<Response<int>> CreateUserAsync(DTO.UserInfo user)
         {
             try
             {
@@ -102,7 +103,7 @@ namespace task_management.Server.Services
             
         }
 
-        public async Task<Response<int>> UpdateUserAsync(DTO.User user)
+        public async Task<Response<int>> UpdateUserAsync(DTO.UserInfo user)
         {
             try
             {
