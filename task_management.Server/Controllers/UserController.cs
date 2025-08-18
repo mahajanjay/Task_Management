@@ -70,7 +70,7 @@ namespace task_management.Server.Controllers
         [AllowAnonymous]
         [MapToApiVersion("1.0")]
         [HttpPost]
-        public async Task<ActionResult<ApiResponse<int>>> Post([FromBody] UserInfo user)
+        public async Task<ActionResult<ApiResponse<int>>> Post([FromBody] Register user)
         {
             Response<int> serviceResponse = await _userService.CreateUserAsync(user);
 

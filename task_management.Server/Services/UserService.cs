@@ -71,18 +71,24 @@ namespace task_management.Server.Services
             }
         }
 
-        public async Task<Response<int>> CreateUserAsync(DTO.UserInfo user)
+        public async Task<Response<int>> CreateUserAsync(DTO.Register user)
         {
             try
             {
+                Shared.Entities.User existingUser = (await _unitOfWork.Users.FindAsync(u => u.Email == user.Email))?.FirstOrDefault();
+
+                if (existingUser == null)
+                {
+                    throw new Exception("User already exists.");
+                }
+
                 Shared.Entities.User userEntity = new Shared.Entities.User
                 {
                     Name = user.Name,
                     Email = user.Email,
                     Password = user.Password,
-                    RoleId = user.RoleId,
-                    TeamId = user.TeamId
                 };
+
                 await _unitOfWork.Users.AddAsync(userEntity);
                 int id = await _unitOfWork.CompleteAsync();
 

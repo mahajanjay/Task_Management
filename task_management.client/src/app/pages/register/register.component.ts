@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ValidationErrorComponent } from '../../reusables/components/validation-error/validation-error.component';
 import { RouterModule } from '@angular/router';
+import { AuthService } from '../../services/core/auth.service';
+import { Register } from '../../shared/models/core/Register';
 
 @Component({
   selector: 'app-register',
@@ -19,6 +21,8 @@ import { RouterModule } from '@angular/router';
 export class RegisterComponent {
   registerForm: FormGroup;
   isSubmitting = false;
+
+  private authService = inject(AuthService); 
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
@@ -49,16 +53,34 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      this.isSubmitting = true;
-      console.log('Register form submitted:', this.registerForm.value);
-      // Add your registration logic here
-      setTimeout(() => {
-        this.isSubmitting = false;
-      }, 2000);
-    } else {
+    if(this.registerForm.invalid) {
       this.markFormGroupTouched();
+      return;
     }
+    
+    this.isSubmitting = true;
+    console.log('Register form submitted:', this.registerForm.value);
+    
+    const data: Register = {
+      name: this.registerForm.value.name,
+      email: this.registerForm.value.email,
+      password: this.registerForm.value.password
+    }
+
+    this.authService.register(data).subscribe({
+      next: (res: any) => {
+        console.log('Registration successful:', res);
+        // Navigate to login or home page after successful registration
+      },
+      error: (err: any) => {
+        console.error('Registration failed:', err);
+        this.isSubmitting = false;
+        // Handle error, show message to user
+      },
+      complete: () => {
+        this.isSubmitting = false;
+      }
+    })
   }
 
   markFormGroupTouched() {
