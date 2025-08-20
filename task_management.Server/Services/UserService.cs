@@ -77,7 +77,7 @@ namespace task_management.Server.Services
             {
                 Shared.Entities.User existingUser = (await _unitOfWork.Users.FindAsync(u => u.Email == user.Email))?.FirstOrDefault();
 
-                if (existingUser == null)
+                if (existingUser != null)
                 {
                     throw new Exception("User already exists.");
                 }
