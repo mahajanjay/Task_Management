@@ -6,6 +6,8 @@ import { Register } from '../../shared/models/core/Register';
 import { map, Observable } from 'rxjs';
 import { ApiResponse } from '../../shared/models/core/ApiResponse';
 import { Login } from '../../shared/models/core/Login';
+import { setLocalStorage } from '../../shared/utils/storage';
+import { TOKEN } from '../../shared/constants/core';
 
 @Injectable({
   providedIn: 'root'
@@ -19,21 +21,17 @@ export class AuthService {
   BASE_URL = environment.apiBaseUrl;
 
   register(data: Register): Observable<ApiResponse<any>> {
-    return this.apiService.post<ApiResponse<any>>(
-      `${this.BASE_URL}/${API_ENDPOINTS.USER}`,
-      data
-    )
-    .pipe(
+    return this.apiService.register(data).pipe(
       map((res: ApiResponse<any> | any) => res.data)
     )
   }
 
   login(data: Login): Observable<ApiResponse<any>> {
-    return this.apiService.post<ApiResponse<any>>(
-      `${this.BASE_URL}/${API_ENDPOINTS.AUTH}/login`,
-      data,
-    ).pipe(
-      map((res: ApiResponse<any> | any) => res.data)
+    return this.apiService.login(data).pipe(
+      map((res: ApiResponse<any> | any) => {
+        setLocalStorage(TOKEN, res.data);
+        return res.data;
+      })
     );
   }
 

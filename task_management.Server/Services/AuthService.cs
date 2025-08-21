@@ -47,7 +47,7 @@ namespace task_management.Server.Services
                 {
                     return new Response<DTO.UserInfo>
                     {
-                        ErrorMessages = "User not found."
+                        ErrorMessages = "Username or Password doesn't match."
                     };
                 }
             }

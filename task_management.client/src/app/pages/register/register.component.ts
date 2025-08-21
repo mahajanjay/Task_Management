@@ -2,9 +2,11 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ValidationErrorComponent } from '../../reusables/components/validation-error/validation-error.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/core/auth.service';
 import { Register } from '../../shared/models/core/Register';
+import { hasInvalidTouched, markAllAsTouched, resetForm } from '../../shared/utils/formsUtil';
+import { alertError, alertSuccess } from '../../shared/utils/alert';
 
 @Component({
   selector: 'app-register',
@@ -23,6 +25,7 @@ export class RegisterComponent {
   isSubmitting = false;
 
   private authService = inject(AuthService); 
+  private router = inject(Router);
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
@@ -53,13 +56,12 @@ export class RegisterComponent {
   }
 
   onSubmit() {
-    if(this.registerForm.invalid) {
-      this.markFormGroupTouched();
+    if(hasInvalidTouched(this.registerForm)) {
+      markAllAsTouched(this.registerForm);
       return;
     }
     
     this.isSubmitting = true;
-    console.log('Register form submitted:', this.registerForm.value);
     
     const data: Register = {
       name: this.registerForm.value.name,
@@ -69,11 +71,12 @@ export class RegisterComponent {
 
     this.authService.register(data).subscribe({
       next: (res: any) => {
-        console.log('Registration successful:', res);
-        // Navigate to login or home page after successful registration
+        this.router.navigate(['/login']);
+        resetForm(this.registerForm);
+        this.isSubmitting = false;
       },
       error: (err: any) => {
-        console.error('Registration failed:', err);
+        alertError('Registration Failed', err.error?.message || 'An error occurred during registration.');
         this.isSubmitting = false;
         // Handle error, show message to user
       },
@@ -81,32 +84,5 @@ export class RegisterComponent {
         this.isSubmitting = false;
       }
     })
-  }
-
-  markFormGroupTouched() {
-    Object.keys(this.registerForm.controls).forEach(key => {
-      const control = this.registerForm.get(key);
-      control?.markAsTouched();
-    });
-  }
-
-  getFieldError(fieldName: string): string {
-    const field = this.registerForm.get(fieldName);
-    if (field?.invalid && field?.touched) {
-      if (field.errors?.['required']) {
-        return `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
-      }
-      if (field.errors?.['email']) {
-        return 'Please enter a valid email address';
-      }
-      if (field.errors?.['minlength']) {
-        const requiredLength = field.errors['minlength'].requiredLength;
-        return `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} must be at least ${requiredLength} characters`;
-      }
-      if (field.errors?.['passwordMismatch']) {
-        return 'Passwords do not match';
-      }
-    }
-    return '';
   }
 }

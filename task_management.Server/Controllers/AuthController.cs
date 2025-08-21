@@ -21,7 +21,7 @@ namespace task_management.Server.Controllers
             _authService = authService;
         }
 
-        [HttpPost]
+        [HttpPost("login")]
         public async Task<ActionResult<LoginResponse>> Post([FromBody] DTO.Login login)
         {
             Response<DTO.UserInfo> serviceResponse = await _authService.AuthenticateUserAsync(login.Email, login.Password);

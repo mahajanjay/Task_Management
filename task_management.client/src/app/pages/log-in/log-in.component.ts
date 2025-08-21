@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ValidationErrorComponent } from '../../reusables/components/validation-error/validation-error.component';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { hasInvalidTouched, markAllAsTouched, resetForm } from '../../shared/utils/formsUtil';
+import { AuthService } from '../../services/core/auth.service';
+import { alertError } from '../../shared/utils/alert';
 
 @Component({
   selector: 'app-log-in',
@@ -17,10 +20,18 @@ import { RouterModule } from '@angular/router';
   styleUrl: './log-in.component.scss'
 })
 export class LogInComponent {
-  loginForm: FormGroup;
+  loginForm!: FormGroup;
   isSubmitting = false;
 
-  constructor(private fb: FormBuilder) {
+  private fb = inject(FormBuilder);
+  private router = inject(Router);
+  private authService = inject(AuthService);
+
+  ngOnInit() {
+    this.declareForm();
+  }
+
+  declareForm() {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
@@ -28,39 +39,30 @@ export class LogInComponent {
   }
 
   onSubmit() {
-    if (this.loginForm.valid) {
-      this.isSubmitting = true;
-      console.log('Login form submitted:', this.loginForm.value);
-      // Add your login logic here
-      setTimeout(() => {
+    if(hasInvalidTouched(this.loginForm)) {
+      markAllAsTouched(this.loginForm);
+      return;
+    }
+
+    this.isSubmitting = true;
+    const credentials = this.loginForm.value;
+
+    this.authService.login(credentials).subscribe({
+      next: (res: any) => {
+        console.log(res);
+        resetForm(this.loginForm);
         this.isSubmitting = false;
-      }, 2000);
-    } else {
-      this.markFormGroupTouched();
-    }
+      }, 
+      error: (err: any) => {
+        alertError('Login failed', err.error?.message || 'An error occurred during login.');
+        this.isSubmitting = false;
+      },
+      complete: () => {
+        this.isSubmitting = false;
+        this.router.navigate(['/']);
+      }
+    })
+
   }
 
-  markFormGroupTouched() {
-    Object.keys(this.loginForm.controls).forEach(key => {
-      const control = this.loginForm.get(key);
-      control?.markAsTouched();
-    });
-  }
-
-  getFieldError(fieldName: string): string {
-    const field = this.loginForm.get(fieldName);
-    if (field?.invalid && field?.touched) {
-      if (field.errors?.['required']) {
-        return `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} is required`;
-      }
-      if (field.errors?.['email']) {
-        return 'Please enter a valid email address';
-      }
-      if (field.errors?.['minlength']) {
-        const requiredLength = field.errors['minlength'].requiredLength;
-        return `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} must be at least ${requiredLength} characters`;
-      }
-    }
-    return '';
-  }
 }
