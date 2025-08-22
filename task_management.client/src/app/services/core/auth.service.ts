@@ -29,8 +29,8 @@ export class AuthService {
   login(data: Login): Observable<ApiResponse<any>> {
     return this.apiService.login(data).pipe(
       map((res: ApiResponse<any> | any) => {
-        setLocalStorage(TOKEN, res.data);
-        return res.data;
+        setLocalStorage(TOKEN, res.data.token);
+        return res.data.token;
       })
     );
   }

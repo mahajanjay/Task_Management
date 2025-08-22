@@ -60,7 +60,7 @@ namespace task_management.Server.Services
             }
         }
 
-        public Response<LoginResponse> GenerateJwtToken(string userName, string role)
+        public Response<LoginResponse> GenerateJwtToken(UserInfo user)
         {
             var jwtSection = _configuration.GetSection("Jwt");
             var key = jwtSection.GetValue<string>("Key");
@@ -71,8 +71,9 @@ namespace task_management.Server.Services
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userName),
-                new Claim(ClaimTypes.Role, role),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, user.Name),
+                new Claim(ClaimTypes.Role, user.RoleId.ToString()),
             };
 
             var token = new JwtSecurityToken(

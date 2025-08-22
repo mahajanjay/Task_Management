@@ -37,7 +37,7 @@ namespace task_management.Server.Controllers
                 return Unauthorized(errorResponse);
             }
 
-            Response<LoginResponse> tokenResponse = _authService.GenerateJwtToken(serviceResponse.Result.Email, serviceResponse.Result.RoleId.ToString());
+            Response<LoginResponse> tokenResponse = _authService.GenerateJwtToken(serviceResponse.Result);
 
             if (tokenResponse.ErrorMessages != null)
             {
