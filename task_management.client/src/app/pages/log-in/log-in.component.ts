@@ -54,6 +54,8 @@ export class LogInComponent {
         this.isSubmitting = false;
       }, 
       error: (err: any) => {
+        console.log(err);
+        
         alertError('Login failed', err.error?.message || 'An error occurred during login.');
         this.isSubmitting = false;
       },

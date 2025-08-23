@@ -21,9 +21,9 @@ export class LoggedInUserService {
     if(!this.parsedToken) {
       this.loggedInUser.set(null);
       return;
-    }
+    }    
 
-    const [ id, email, name, roleId ] = this.parsedToken.sub;
+    const [ id, email, name, roleId ] = this.parsedToken['sub'];
 
     this.loggedInUser.set({
       id: parseInt(id),
@@ -36,6 +36,4 @@ export class LoggedInUserService {
   getLoggedInUser(): LoggedInUser | null {
     return this.loggedInUser();
   }
-
-
 }
