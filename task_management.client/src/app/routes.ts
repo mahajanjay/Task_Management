@@ -4,15 +4,18 @@ import { BoardsFactoryComponent } from './pages/boards-factory/boards-factory.co
 import { RegisterComponent } from './pages/register/register.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { authGuard } from './core/guards/auth.guard';
+import { noAuthGuard } from './core/guards/no-auth.guard';
 
 export const routes: Routes = [
   {
     component: RegisterComponent,
-    path: 'register'
+    path: 'register',
+    canActivate: [noAuthGuard]
   },
   {
     component: LogInComponent,
-    path: 'login'
+    path: 'login',
+    canActivate: [noAuthGuard]
   },
   {
     component: MainLayoutComponent,

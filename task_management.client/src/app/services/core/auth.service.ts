@@ -1,13 +1,13 @@
 import { inject, Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { environment } from '../../../environments/environment.development';
-import { API_ENDPOINTS } from '../../shared/utils/api-endpoints';
 import { Register } from '../../shared/models/core/Register';
 import { map, Observable } from 'rxjs';
 import { ApiResponse } from '../../shared/models/core/ApiResponse';
 import { Login } from '../../shared/models/core/Login';
 import { setLocalStorage } from '../../shared/utils/storage';
 import { TOKEN } from '../../shared/constants/core';
+import { LoggedInUserService } from './logged-in-user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +17,7 @@ export class AuthService {
   constructor() { }
 
   private apiService = inject(ApiService);
+  private loggedInUserService = inject(LoggedInUserService);
 
   BASE_URL = environment.apiBaseUrl;
 
@@ -30,6 +31,7 @@ export class AuthService {
     return this.apiService.login(data).pipe(
       map((res: ApiResponse<any> | any) => {
         setLocalStorage(TOKEN, res.data.token);
+        this.loggedInUserService.setLoggedInUser(res.data.token);
         return res.data.token;
       })
     );

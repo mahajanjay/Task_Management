@@ -71,8 +71,10 @@ namespace task_management.Server.Services
 
             var claims = new[]
             {
+                new Claim(JwtRegisteredClaimNames.Sub, user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Email),
                 new Claim(JwtRegisteredClaimNames.Sub, user.Name),
+                new Claim(JwtRegisteredClaimNames.Sub, user.RoleId.ToString()),
                 new Claim(ClaimTypes.Role, user.RoleId.ToString()),
             };
 
