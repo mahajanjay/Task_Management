@@ -87,6 +87,7 @@ namespace task_management.Server.Services
                     Name = user.Name,
                     Email = user.Email,
                     Password = user.Password,
+                    CreatedAt = DateTime.Now,
                 };
 
                 await _unitOfWork.Users.AddAsync(userEntity);
