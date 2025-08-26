@@ -24,6 +24,7 @@
       <span *ngIf="!isDarkMode">🌙</span>
       <span *ngIf="isDarkMode">☀️</span>
     </button>
-    <div class="tb-header__avatar" title="User Profile">AB</div>
+    <!-- <div class="tb-header__avatar" title="User Profile">AB</div> -->
+     <div> Welcome: {{loggedInUserService.getLoggedInUser()?.name}} </div>
   </div>
 </header>
