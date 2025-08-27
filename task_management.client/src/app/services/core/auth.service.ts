@@ -5,9 +5,10 @@ import { Register } from '../../shared/models/core/Register';
 import { map, Observable } from 'rxjs';
 import { ApiResponse } from '../../shared/models/core/ApiResponse';
 import { Login } from '../../shared/models/core/Login';
-import { setLocalStorage } from '../../shared/utils/storage';
+import { removeLocalStorage, setLocalStorage } from '../../shared/utils/storage';
 import { TOKEN } from '../../shared/constants/core';
 import { LoggedInUserService } from './logged-in-user.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,7 @@ export class AuthService {
 
   private apiService = inject(ApiService);
   private loggedInUserService = inject(LoggedInUserService);
+  private router = inject(Router);
 
   BASE_URL = environment.apiBaseUrl;
 
@@ -35,6 +37,12 @@ export class AuthService {
         return res.data.token;
       })
     );
+  }
+
+  logout() {
+    removeLocalStorage(TOKEN);
+    this.loggedInUserService.reset();
+    this.router.navigate(['login']);
   }
 
 }

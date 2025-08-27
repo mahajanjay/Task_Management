@@ -36,4 +36,8 @@ export class LoggedInUserService {
   getLoggedInUser(): LoggedInUser | null {
     return this.loggedInUser();
   }
+
+  reset() {
+    this.loggedInUser.set(null);
+  }
 }

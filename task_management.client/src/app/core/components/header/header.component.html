@@ -1,12 +1,13 @@
 <header class="tb-header" [class.tb-header--collapsed]="sidebarCollapsed">
   <div class="tb-header__left">
-    <nav class="tb-header__nav">
-    </nav>
+    <nav class="tb-header__nav"></nav>
   </div>
   <div class="tb-header__right">
     <div class="boardButtons_wrapper">
       @for (button of headerService.headerButtons(); track $index) {
-        <button [classList]="button.classList" (click)="button.callback()" > {{button.title}} </button>
+      <button [classList]="button.classList" (click)="button.callback()">
+        {{ button.title }}
+      </button>
       }
     </div>
     <div class="select_board_wrapper">
@@ -20,11 +21,43 @@
         <option value="">sprint2</option>
       </select>
     </div>
-    <button class="tb-theme-toggle" (click)="toggleTheme()" [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'">
+    <button
+      class="tb-theme-toggle"
+      (click)="toggleTheme()"
+      [attr.aria-label]="
+        isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'
+      "
+    >
       <span *ngIf="!isDarkMode">🌙</span>
       <span *ngIf="isDarkMode">☀️</span>
     </button>
-    <!-- <div class="tb-header__avatar" title="User Profile">AB</div> -->
-     <div> Welcome: {{loggedInUserService.getLoggedInUser()?.name}} </div>
+    <div class="d-flex align-center gap">
+      <a
+        (click)="toggleUserProfileMenu()"
+        class="tb-header__avatar"
+        title="User Profile"
+      >
+        {{ getNameAbbrivation }}
+      </a>
+      @if (isUserMenuOpen()) {
+      <ng-container [ngTemplateOutlet]="userMenu"></ng-container>
+      }
+      <span> Welcome: {{ getLoggedInUserName }} </span>
+    </div>
   </div>
 </header>
+
+<ng-template #userMenu>
+  <div class="userMenu_wrapper">
+    <ul>
+      @for (item of userMenuList; track $index) {
+        <li>
+          <a (click)="item.action()">
+            <span [classList]="item.iconClassList"> {{item.icon}} </span>
+            <span> {{item.label}} </span>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</ng-template>

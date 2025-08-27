@@ -1,30 +1,65 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input } from '@angular/core';
+import { Component, HostListener, inject, Input, signal } from '@angular/core';
 import { HeaderService } from '../../../services/core/header.service';
 import { THEME } from '../../../shared/constants/core';
 import { ThemeService } from '../../../services/core/theme.service';
 import { LoggedInUserService } from '../../../services/core/logged-in-user.service';
+import { AuthService } from '../../../services/core/auth.service';
 
 @Component({
   selector: 'app-header',
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   @Input() sidebarCollapsed = false;
   isDarkMode = false;
+  isUserMenuOpen = signal<boolean>(false);
 
+  userMenuList: any[] = [
+    {
+      label: 'Logout',
+      iconClassList: 'icon material-symbols-outlined',
+      icon: 'logout',
+      action: () => this.logout(),
+    },
+    {
+      label: 'Settings',
+      iconClassList: 'icon material-symbols-outlined',
+      icon: 'settings',
+      action: () => console.log('Settings clicked'),
+    }
+  ]
+  
   public headerService = inject(HeaderService);
   public themeService = inject(ThemeService);
   public loggedInUserService = inject(LoggedInUserService);
+  private authService = inject(AuthService);
 
   ngOnInit() {
     this.isDarkMode = this.themeService.isDarkMode();
-    console.log(this.loggedInUserService.getLoggedInUser());
-    
+  }
+
+  get getLoggedInUserName() {
+    const user = this.loggedInUserService.getLoggedInUser();
+    return user ? user.name : 'Guest';
+  }
+
+  get getNameAbbrivation() {
+    const user = this.loggedInUserService.getLoggedInUser();
+    if (user && user.name) {
+      return user.name
+        .split(' ')
+        .map((n) => n[0])
+        .join('')
+        .toUpperCase();
+    }
+    return '';
+  }
+
+  toggleUserProfileMenu() {
+    this.isUserMenuOpen.set(!this.isUserMenuOpen());
   }
 
   toggleTheme() {
@@ -36,6 +71,26 @@ export class HeaderComponent {
     } else {
       root.classList.remove('tb-dark');
       localStorage.removeItem(THEME);
+    }
+  }
+
+  openUserMunu(event: Event) {
+    event.preventDefault();
+    console.log('User menu clicked');
+  }
+
+  logout() {
+    this.authService.logout();
+  }
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    const target = event.target as HTMLElement;
+    if (
+      !target.closest('.tb-header__avatar') &&
+      !target.closest('.user-menu')
+    ) {
+      this.isUserMenuOpen.set(false);
     }
   }
 }
