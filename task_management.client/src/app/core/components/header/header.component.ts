@@ -5,6 +5,7 @@ import { THEME } from '../../../shared/constants/core';
 import { ThemeService } from '../../../services/core/theme.service';
 import { LoggedInUserService } from '../../../services/core/logged-in-user.service';
 import { AuthService } from '../../../services/core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,6 @@ import { AuthService } from '../../../services/core/auth.service';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
-  @Input() sidebarCollapsed = false;
   isDarkMode = false;
   isUserMenuOpen = signal<boolean>(false);
 
@@ -28,7 +28,7 @@ export class HeaderComponent {
       label: 'Settings',
       iconClassList: 'icon material-symbols-outlined',
       icon: 'settings',
-      action: () => console.log('Settings clicked'),
+      action: () => this.router.navigate(['/settings']),
     }
   ]
   
@@ -36,6 +36,7 @@ export class HeaderComponent {
   public themeService = inject(ThemeService);
   public loggedInUserService = inject(LoggedInUserService);
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   ngOnInit() {
     this.isDarkMode = this.themeService.isDarkMode();

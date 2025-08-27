@@ -1,10 +1,14 @@
 <div class="main_layout_container">
-  <app-header [sidebarCollapsed]="sidebarCollapsed"></app-header>
+  <div class="header_wrapper" [class.tb-sidebar--collapsed]="sidebarCollapsed" >
+    <app-header></app-header>
+  </div>
   <div class="main-layout">
     <app-sidebar [collapsed]="sidebarCollapsed" (toggleSidebar)="toggleSidebar()"></app-sidebar>
     <div class="main-layout__content" [class.main-layout__content--collapsed]="sidebarCollapsed">
       <router-outlet></router-outlet>
     </div>
   </div>
-  <app-footer [sidebarCollapsed]="sidebarCollapsed"></app-footer>
+  <div class="footer_wrapper" [class.tb-sidebar--collapsed]="sidebarCollapsed">
+    <app-footer></app-footer>
+  </div>
 </div>
