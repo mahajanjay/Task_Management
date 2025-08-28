@@ -1,0 +1,17 @@
+<div class="settings_container">
+    <app-header></app-header>
+
+    <div class="settings_content">
+        <div class="sideMenu_wrapper">
+            <ng-container *ngTemplateOutlet="sideMenu"></ng-container>
+        </div>
+        <div class="setting_sideMenu_content">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+
+</div>
+
+<ng-template #sideMenu>
+    
+</ng-template>

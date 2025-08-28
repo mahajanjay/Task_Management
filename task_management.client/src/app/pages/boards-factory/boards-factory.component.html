@@ -1,1 +1,18 @@
 <ng-container #boardsContainer></ng-container>
+
+<ng-template #customHeaderOptions>
+  <button class="gh-btn-primary" (click)="boardsService.openAddTask()">
+        Add
+      </button>
+    <div class="select_board_wrapper">
+          <select class="select_board" name="" id="">
+            <option value="">board1</option>
+            <option value="">board2</option>
+          </select>
+          /
+          <select class="select_board" name="" id="">
+            <option value="">sprint1</option>
+            <option value="">sprint2</option>
+          </select>
+    </div>
+</ng-template>

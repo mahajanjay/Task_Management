@@ -3,24 +3,9 @@
     <nav class="tb-header__nav"></nav>
   </div>
   <div class="tb-header__right">
-    <div class="boardButtons_wrapper">
-      @for (button of headerService.headerButtons(); track $index) {
-      <button [classList]="button.classList" (click)="button.callback()">
-        {{ button.title }}
-      </button>
-      }
-    </div>
-    <div class="select_board_wrapper">
-      <select class="select_board" name="" id="">
-        <option value="">board1</option>
-        <option value="">board2</option>
-      </select>
-      /
-      <select class="select_board" name="" id="">
-        <option value="">sprint1</option>
-        <option value="">sprint2</option>
-      </select>
-    </div>
+
+    <ng-container [ngTemplateOutlet]="headerService.customHeaderOptions()"></ng-container>
+
     <button
       class="tb-theme-toggle"
       (click)="toggleTheme()"

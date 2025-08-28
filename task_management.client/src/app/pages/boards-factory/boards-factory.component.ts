@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, ElementRef, inject, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BoardsService } from '../../services/reusables/boards.service';
 import { BoardComponent } from '../../features/board/board.component';
@@ -14,13 +14,15 @@ import { HeaderService } from '../../services/core/header.service';
 })
 export class BoardsFactoryComponent {
   @ViewChild('boardsContainer', { read: ViewContainerRef }) boardsContainer!: ViewContainerRef;
+  @ViewChild('customHeaderOptions', { read: TemplateRef }) customHeaderOptions!: TemplateRef<any>;
 
   boardsService = inject(BoardsService);
   headerService = inject(HeaderService);
 
   ngAfterViewInit() {
     this.loadBoards();
-    this.headerService.setHeaderButtons([...this.boardsService.boardActionButtons]);
+    //this.headerService.setHeaderButtons([...this.boardsService.boardActionButtons]);
+    this.headerService.setCustomHeaderOptions(this.customHeaderOptions);
   }
 
   loadBoards() {

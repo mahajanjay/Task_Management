@@ -5,6 +5,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { LogInComponent } from './pages/log-in/log-in.component';
 import { authGuard } from './core/guards/auth.guard';
 import { noAuthGuard } from './core/guards/no-auth.guard';
+import { SettingsComponent } from './pages/settings/settings.component';
 
 export const routes: Routes = [
   {
@@ -24,5 +25,10 @@ export const routes: Routes = [
     children: [
       { path: '', component: BoardsFactoryComponent }
     ]
+  },
+  {
+    component: SettingsComponent,
+    path: 'settings',
+    canActivate: [authGuard]
   }
 ];
