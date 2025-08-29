@@ -21,7 +21,7 @@
   --gh-btn-text: #fff;
   --tb-header-height: 56px;
   --bg-color-muted: #f6f8fa;
-  --gh-list-hover-bg: #F2F3F4;
+  --gh-list-hover-bg: #e5e5e5;
 
   --standard-border-radius: 6px;
   --standard-input-padding: 7px 12px;
@@ -196,6 +196,10 @@ body {
   cursor: not-allowed;
 }
 
+.icon {
+  color: var(--gh-muted-text);
+  font-size: 20px;
+}
 /************************Classess**************************/
 
 .input-txt {

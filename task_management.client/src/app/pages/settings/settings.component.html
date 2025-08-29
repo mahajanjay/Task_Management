@@ -1,17 +1,30 @@
 <div class="settings_container">
-    <app-header></app-header>
+  <app-header></app-header>
 
-    <div class="settings_content">
-        <div class="sideMenu_wrapper">
-            <ng-container *ngTemplateOutlet="sideMenu"></ng-container>
-        </div>
-        <div class="setting_sideMenu_content">
-            <router-outlet></router-outlet>
-        </div>
+  <div class="settings_content">
+    <div class="sideMenu_wrapper">
+      <ng-container *ngTemplateOutlet="sideMenu"></ng-container>
     </div>
-
+    <div class="setting_sideMenu_content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>
 
 <ng-template #sideMenu>
-    
+  <ul>
+    @for (item of sideMenuOptions; track $index) {
+    <li class="sideMenuItem" [class.activeLink]="rla.isActive">
+      <a
+        (click)="item.action()"
+        [routerLink]="item.routerLink"
+        routerLinkActive="activeLink"
+        #rla="routerLinkActive"
+      >
+        <span [classList]="item.iconClassList"> {{ item.icon }} </span>
+        {{ item.label }}
+      </a>
+    </li>
+    }
+  </ul>
 </ng-template>
