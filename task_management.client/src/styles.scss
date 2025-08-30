@@ -200,6 +200,12 @@ body {
   color: var(--gh-muted-text);
   font-size: 20px;
 }
+
+.master_title {
+  color: var(--gh-text);
+  // font-size: var(--text-title-size-medium);
+  // font-weight: var(--base-text-weight-semibold);
+}
 /************************Classess**************************/
 
 .input-txt {
@@ -226,6 +232,10 @@ body {
 
 .m-10 {
   margin: 10px;
+}
+
+.mt-10 {
+  margin-top: 10px;
 }
 
 .d-flex {

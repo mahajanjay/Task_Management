@@ -6,9 +6,9 @@ import { LogInComponent } from './pages/log-in/log-in.component';
 import { authGuard } from './core/guards/auth.guard';
 import { noAuthGuard } from './core/guards/no-auth.guard';
 import { SettingsComponent } from './pages/settings/settings.component';
-import { UsersComponent } from './pages/users/users.component';
 import { TeamsComponent } from './pages/teams/teams.component';
 import { RolesComponent } from './pages/roles/roles.component';
+import { UsersComponent } from './pages/users/users.component';
 
 export const routes: Routes = [
   {

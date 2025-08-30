@@ -1,0 +1,12 @@
+<ng-container>
+    <div class="d-flex justify-between align-center">
+        <h2 class="masterTitle"> {{title}} </h2>
+        @if (openFormBtn) {
+            <button class="gh-btn-primary" (click)="openFormBtn.onClick()">
+                {{ openFormBtn.label }} 
+            </button>
+        }
+    </div>
+    <ng-content select="[searchbar]"></ng-content>
+    <ng-content select="[tableContent]"></ng-content>
+</ng-container>
